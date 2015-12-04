@@ -4,6 +4,10 @@ class Input {
   constructor() {
     this.apiKey = '';
     this.requestUrl = 'http://api.themoviedb.org/3';
+    this.baseUrl = '';
+    this.posterSize = 3;
+    this.minVotes = 100;
+    this.minAverage = 6.0;
     this.data = {
       genres: {
         4: 'Action',
@@ -17,12 +21,33 @@ class Input {
         1990: '90s',
         2000: '00s',
         2010: '10s'
-      }
+      },
+      result: false
     }
     this.selected = {
-      genre: 'all',
-      year: 'all'
+      genre: false,
+      year: false
     }
+  }
+
+  convertSelection() {
+    let parameters = '';
+
+    if(this.selected.year) {
+      let year = parseInt(this.selected.year);
+
+      parameters = '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';      
+    }
+
+    return parameters;
+  }
+
+  randomize(amount) {
+    return Math.ceil(Math.random() * amount);
+  }
+
+  createPath() {
+    input.data.result.poster = this.baseUrl + input.posterSize + input.data.result.poster_path;
   }
 }
 

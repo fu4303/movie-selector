@@ -11,8 +11,10 @@
 
 		<div id="app">
 
-			<div id="movie">
+			<div v-if="result" id="movie">
+				<img v-bind:src="result.poster">
 
+				<h2>{{ result.title }}</h2>
 			</div>
 
 			<div id="filter">
@@ -21,7 +23,7 @@
 				</ol>
 
 				<ol>
-					<li v-for="year in years" v-on:click="filterYear(year)">&#700;{{ year }}</li>
+					<li v-for="(index, year) in years" v-on:click="filterYear(index)">&#700;{{ year }}</li>
 				</ol>
 
 				<button v-on:click="recommend()">Recommend</button>
