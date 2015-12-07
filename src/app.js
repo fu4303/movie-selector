@@ -24,7 +24,7 @@ let app = new Vue({
         let page = input.randomize(data.total_pages);
 
         this.$http.get(request + '&page=' + page, function(data) {
-          let result = input.randomize(data.results.length);
+          let result = (input.randomize(data.results.length)) - 1;
 
           input.data.result = data.results[result];
           input.createPath();
