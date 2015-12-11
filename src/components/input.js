@@ -5,7 +5,7 @@ class Input {
     this.apiKey = '';
     this.requestUrl = 'http://api.themoviedb.org/3';
     this.baseUrl = '';
-    this.posterSize = 3;
+    this.posterSize = 4;
     this.minVotes = 100;
     this.minAverage = 6.0;
     this.data = {
@@ -47,7 +47,7 @@ class Input {
   }
 
   createPath() {
-    input.data.result.poster = this.baseUrl + input.posterSize + input.data.result.poster_path;
+    input.data.result.poster = this.baseUrl + input.posterSize + input.data.result.backdrop_path;
   }
 }
 

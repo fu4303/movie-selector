@@ -1,0 +1,30 @@
+#filter {
+	float: left;
+	width: 320px;
+
+	#options {
+		@include block();
+		width: 100%;
+	}
+
+	#recommend {
+		@include box-shadow();
+		background: $blue;
+		border-radius: $border-radius;
+		color: $white;
+		cursor: pointer;
+		float: left;
+		line-height: 60px;
+		margin-top: 40px;
+		font-weight: 700;
+		text-align: center;
+		transition: background-color 0.4s ease-out;
+		width: 100%;
+
+		&:active,
+		&:focus,
+		&:hover {
+			background: #8C78F0;
+		}
+	}
+}
