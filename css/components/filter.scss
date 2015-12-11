@@ -1,10 +1,49 @@
 #filter {
-	float: left;
+	position: absolute;
+	right: 0;
 	width: 320px;
 
 	#options {
 		@include block();
 		width: 100%;
+
+		ol {
+			font-size: 16px;
+			line-height: 1.2;
+		}
+
+		li {
+			cursor: default;
+			float: left;
+			margin-top: 15px;
+			width: 50%;
+
+			&:hover .check {
+				border: 2px solid $blue;
+			}
+
+			&:hover p {
+				color: $blue;
+			}
+		}
+
+		p {
+			transition: color 0.2s ease-out;
+		}
+
+		.check {
+			border: 2px solid $gray;
+			border-radius: $border-radius;
+			float: left;
+			height: 20px;
+			margin-right: 10px;
+			transition: border-color 0.2s ease-out;
+			width: 20px;
+
+			&:before {
+				background: $blue;
+			}
+		}
 	}
 
 	#recommend {

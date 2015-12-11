@@ -31,12 +31,23 @@
 			<div id="filter">
 
 				<div id="options">
-					<ol>
-						<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">{{ genre }}</li>
-					</ol>
+
+					<h3>Genres</h3>
 
 					<ol>
-						<li v-for="(index, year) in years" v-on:click="filterYear(index)">&#700;{{ year }}</li>
+						<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">
+							<div v-bind:class="{'active': activeGenre(index)}" class="check"></div>
+							<p>{{ genre }}</p>
+						</li>
+					</ol>
+
+					<h3>Years</h3>
+
+					<ol>
+						<li v-for="(index, year) in years" v-on:click="filterYear(index)">
+							<div v-bind:class="{'active': activeYear(index)}" class="check"></div>
+							<p>&#700;{{ year }}</p>
+						</li>
 					</ol>
 				</div>
 

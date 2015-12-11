@@ -1,5 +1,7 @@
 'use strict';
 
+Vue.config.debug = true;
+
 ! function() {
 
   let app = new Vue({
@@ -16,11 +18,25 @@
       // });
     },
     methods: {
+      activeGenre: function(genre) {
+        return genre == input.data.selected.genre;
+      },
+      activeYear: function(year) {
+        return year == input.data.selected.year;
+      },
       filterGenre: function(genre) {
-        input.selected.genre = genre;
+        if(input.data.selected.genre == genre) {
+          input.data.selected.genre = false;
+        } else {
+          input.data.selected.genre = genre;
+        }
       },
       filterYear: function(year) {
-        input.selected.year = year;
+        if(input.data.selected.year == year) {
+          input.data.selected.year = false;
+        } else {
+          input.data.selected.year = year;
+        }
       },
       recommend: function() {
         let parameters = input.convertSelection();

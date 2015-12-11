@@ -1,21 +1,11 @@
-@keyframes slide-in {
-  0% {
-    transform: scale(0, 0);
-  }
-  
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
 #movie {
   @include block();
-  animation: slide-in 0.4s ease-out forwards;
+  animation: appear 0.4s ease-out forwards;
   margin-right: 80px;
   width: 580px;
 
   .poster {
-    background: $gray-dark;
+    background: $gray;
     border-radius: $border-radius;
     height: 281px;
     margin-bottom: 30px;
@@ -25,7 +15,7 @@
     &:before {
       background: $black;
       background: linear-gradient(rgba(0, 0, 0, 0), $black);
-      border-radius: $border-radius;
+      border-radius: 0 0 $border-radius $border-radius;
       bottom: 0;
       content: '';
       height: 50%;

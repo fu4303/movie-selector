@@ -11,9 +11,16 @@ class Input {
     this.data = {
       genres: {
         4: 'Action',
-        21: 'Comedy'
+        21: 'Comedy',
+        3: 'Romance',
+        20: 'Drama',
+        2: 'Animation',
+        19: 'Thriller',
+        1: 'Western',
+        18: 'Horror'
       },
       years: {
+        1940: '40s',
         1950: '50s',
         1960: '60s',
         1970: '70s',
@@ -22,19 +29,19 @@ class Input {
         2000: '00s',
         2010: '10s'
       },
-      result: false
-    }
-    this.selected = {
-      genre: false,
-      year: false
+      result: false,
+      selected: {
+        genre: false,
+        year: false
+      }
     }
   }
 
   convertSelection() {
     let parameters = '';
 
-    if(this.selected.year) {
-      let year = parseInt(this.selected.year);
+    if(this.data.selected.year) {
+      let year = parseInt(this.data.selected.year);
 
       parameters = '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';      
     }
