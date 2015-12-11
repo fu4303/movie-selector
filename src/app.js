@@ -31,9 +31,11 @@
 
           this.$http.get(request + '&page=' + page, function(data) {
             let result = (input.randomize(data.results.length)) - 1;
-            
+
             input.data.result = data.results[result];
+
             input.createPath();
+            input.setYear();
           });
         });
       }

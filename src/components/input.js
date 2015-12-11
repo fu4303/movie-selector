@@ -49,6 +49,10 @@ class Input {
   createPath() {
     input.data.result.poster = this.baseUrl + input.posterSize + input.data.result.backdrop_path;
   }
+
+  setYear() {
+    input.data.result.year = input.data.result.release_date.slice(0, 4);
+  }
 }
 
 let input = new Input();

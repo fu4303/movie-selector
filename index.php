@@ -21,7 +21,7 @@
 
 				<div class="poster">
 					<img v-bind:src="result.poster">
-					<h2>{{ result.title }}</h2>
+					<h2>{{ result.title }} <span>&nbsp;&bull;&nbsp; {{ result.year }}</span></h2>
 				</div>
 
 				<p>{{ result.overview }}</p>
