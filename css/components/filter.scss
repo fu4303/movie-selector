@@ -1,70 +1,122 @@
 #filter {
-	position: absolute;
-	right: 0;
-	width: 320px;
+  float: right;
+  width: 320px;
 
-	#options {
-		@include block();
-		width: 100%;
+  &.result {
+    position: absolute;
+    right: 0;
+  }
 
-		ol {
-			font-size: 16px;
-			line-height: 1.2;
-		}
+  #options {
+    @include block();
+    width: 100%;
 
-		li {
-			cursor: default;
-			float: left;
-			margin-top: 15px;
-			width: 50%;
+    .component {
+      float: left;
+      border-bottom: 1px solid $gray-border;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      width: 100%;
 
-			&:hover .check {
-				border: 2px solid $blue;
-			}
+      &:last-of-type {
+        border-bottom: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
 
-			&:hover p {
-				color: $blue;
-			}
-		}
+        li {
+          width: 100%;
+        }
+      }
+    }
 
-		p {
-			transition: color 0.2s ease-out;
-		}
+    ol {
+      float: left;
+      font-size: 16px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
 
-		.check {
-			border: 2px solid $gray;
-			border-radius: $border-radius;
-			float: left;
-			height: 20px;
-			margin-right: 10px;
-			transition: border-color 0.2s ease-out;
-			width: 20px;
+    .slide-enter {
+      animation: appear 0.2s ease-out forwards;
+    }
 
-			&:before {
-				background: $blue;
-			}
-		}
-	}
+    .slide-leave {
+      animation: disappear 0.2s ease-out forwards;
+    }
 
-	#recommend {
-		@include box-shadow();
-		background: $blue;
-		border-radius: $border-radius;
-		color: $white;
-		cursor: pointer;
-		float: left;
-		line-height: 60px;
-		margin-top: 40px;
-		font-weight: 700;
-		text-align: center;
-		-webkit-transition: background-color 0.2s ease-out;
-		transition: background-color 0.2s ease-out;
-		width: 100%;
+    li {
+      cursor: default;
+      float: left;
+      margin-top: 15px;
+      width: 50%;
 
-		&:active,
-		&:focus,
-		&:hover {
-			background: #8C78F0;
-		}
-	}
+      &:hover .check {
+        border: 2px solid $blue;
+      }
+
+      &:hover p {
+        color: $blue;
+      }
+
+      &:active .check,
+      &:focus .check {
+        background: $gray-light;
+      }
+    }
+
+    h3 {
+      font-size: 18px;
+      width: 100%;
+
+      span {
+        cursor: pointer;
+        float: right;
+        font-size: 14px;
+        font-weight: 400;
+        margin-top: 4px;
+        text-decoration: underline;
+        transition: color 0.2s ease-out;
+
+        &:before {
+          content: '+';
+          float: left;
+          margin-right: 5px;
+          transition: transform 0.2s ease-out;
+        }
+
+        &:hover {
+          color: $blue;
+        }
+
+        &.active:before {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    p {
+      transition: color 0.2s ease-out;
+    }
+
+    .check {
+      border: 2px solid $gray;
+      border-radius: $border-radius;
+      float: left;
+      height: 20px;
+      margin-right: 10px;
+      transition: border-color 0.2s ease-out;
+      width: 20px;
+
+      &:before {
+        background: $blue;
+      }
+    }
+  }
+
+  .button {
+    @include box-shadow();
+    float: left;
+    margin-top: 40px;
+    width: 100%;
+  }
 }

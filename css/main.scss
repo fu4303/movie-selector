@@ -2,6 +2,7 @@
 @import 'mixins';
 @import 'variables';
 
+@import 'components/button';
 @import 'components/movie';
 @import 'components/filter';
 
@@ -35,10 +36,10 @@ ol {
 
 #app {
   left: 0;
-  margin: 0 auto;
+  margin: 0 auto 10%;
   position: absolute;
   right: 0;
-  top: 15%;
+  top: 10%;
   transition: width 0.2s ease-out;
   width: 320px;
 

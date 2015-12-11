@@ -1,16 +1,20 @@
 #movie {
   @include block();
-  animation: appear 0.4s ease-out forwards;
+  animation: appear-delayed 0.4s ease-out forwards;
   margin-right: 80px;
   width: 580px;
+
+  .poster,
+  .poster img {
+    height: 281px;
+    width: 500px;
+  }
 
   .poster {
     background: $gray;
     border-radius: $border-radius;
-    height: 281px;
     margin-bottom: 30px;
     position: relative;
-    width: 500px;
 
     &:before {
       background: $black;
@@ -33,6 +37,8 @@
       font-size: 24px;
       font-weight: 700;
       line-height: 1.4;
+      max-height: 281px;
+      overflow: hidden;
       padding: 30px 30px 35px;
       position: absolute;
       text-align: center;
@@ -42,5 +48,11 @@
         font-weight: 400;
       }
     }
+  }
+
+  .button {
+    font-size: 16px;
+    line-height: 50px;
+    margin: 40px auto 0;
   }
 }

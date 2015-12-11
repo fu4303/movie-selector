@@ -26,32 +26,60 @@
 
 				<p>{{ result.overview }}</p>
 
+				<a class="button" target="_blank" v-bind:href="result.trailer">Search for trailers</a>
+
 			</div>
 
-			<div id="filter">
+			<div id="filter" v-bind:class="{'result': result}">
 
 				<div id="options">
 
-					<h3>Genres</h3>
+					<div class="component">
 
-					<ol>
-						<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">
+						<h3>Genres<span v-on:click="options.genres = ! options.genres" v-bind:class="{'active': options.genres}">Show options</span></h3>
+
+						<ol v-show="options.genres" transition="slide">
+							<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">
+								<div v-bind:class="{'active': activeGenre(index)}" class="check"></div>
+								<p>{{ genre }}</p>
+							</li>
+						</ol>
+
+					</div>
+
+					<div class="component">
+
+						<h3>Years<span v-on:click="options.years = ! options.years" v-bind:class="{'active': options.years}">Show options</span></h3>
+
+						<ol v-show="options.years" transition="slide">
+							<li v-for="(index, year) in years" v-on:click="filterYear(index)">
+								<div v-bind:class="{'active': activeYear(index)}" class="check"></div>
+								<p>&#700;{{ year }}</p>
+							</li>
+						</ol>
+
+					</div>
+
+					<div class="component">
+
+						<h3>Other<span v-on:click="options.other = ! options.other" v-bind:class="{'active': options.other}">Show options</span></h3>
+
+						<ol v-show="options.other" transition="slide">
+							<li>
+								<div v-bind:class="{'active': activeGenre(index)}" class="check"></div>
+								<p>Include lesser known movies</p>
+							</li>
+							<li>
+
+						</li>
 							<div v-bind:class="{'active': activeGenre(index)}" class="check"></div>
-							<p>{{ genre }}</p>
+							<p>Include bad movies</p>
 						</li>
 					</ol>
 
-					<h3>Years</h3>
-
-					<ol>
-						<li v-for="(index, year) in years" v-on:click="filterYear(index)">
-							<div v-bind:class="{'active': activeYear(index)}" class="check"></div>
-							<p>&#700;{{ year }}</p>
-						</li>
-					</ol>
 				</div>
 
-				<a id="recommend" v-on:click="recommend()">Recommend</a>
+				<a class="button" v-on:click="recommend()">Recommend</a>
 				
 			</div>
 

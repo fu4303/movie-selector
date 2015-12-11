@@ -5,8 +5,9 @@ class Input {
     this.apiKey = '';
     this.requestUrl = 'http://api.themoviedb.org/3';
     this.baseUrl = '';
+    this.trailerBase = 'https://www.youtube.com/results';
     this.posterSize = 4;
-    this.minVotes = 100;
+    this.minVotes = 50;
     this.minAverage = 6.0;
     this.data = {
       genres: {
@@ -33,6 +34,11 @@ class Input {
       selected: {
         genre: false,
         year: false
+      },
+      options: {
+        genres: false,
+        years: false,
+        other: false
       }
     }
   }
@@ -54,11 +60,17 @@ class Input {
   }
 
   createPath() {
-    input.data.result.poster = this.baseUrl + input.posterSize + input.data.result.backdrop_path;
+    this.data.result.poster = this.baseUrl + input.posterSize + this.data.result.backdrop_path;
   }
 
   setYear() {
-    input.data.result.year = input.data.result.release_date.slice(0, 4);
+    this.data.result.year = this.data.result.release_date.slice(0, 4);
+  }
+
+  setTrailer() {
+    var title = this.data.result.title.replace(/\s/g, '+').toLowerCase();
+
+    this.data.result.trailer = this.trailerBase + '?search_query=' + title + '+' + this.data.result.year + '+trailer';
   }
 }
 

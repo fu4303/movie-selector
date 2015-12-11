@@ -39,6 +39,8 @@ Vue.config.debug = true;
         }
       },
       recommend: function() {
+        input.data.result = {};
+
         let parameters = input.convertSelection();
         let request = input.requestUrl + '/discover/movie?api_key=' + input.apiKey + parameters + '&vote_count.gte=' + input.minVotes + '&vote_average.gte=' + input.minAverage;
 
@@ -52,6 +54,7 @@ Vue.config.debug = true;
 
             input.createPath();
             input.setYear();
+            input.setTrailer();
           });
         });
       }
