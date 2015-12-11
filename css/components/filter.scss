@@ -1,11 +1,9 @@
 #filter {
-  float: right;
+  animation: appear-enter 0.2s ease-out forwards;
+  margin-bottom: 120px;
+  position: absolute;
+  right: 0;
   width: 320px;
-
-  &.result {
-    position: absolute;
-    right: 0;
-  }
 
   #options {
     @include block();
@@ -37,11 +35,11 @@
     }
 
     .slide-enter {
-      animation: appear 0.2s ease-out forwards;
+      animation: slide-enter 0.2s ease-out forwards;
     }
 
     .slide-leave {
-      animation: disappear 0.2s ease-out forwards;
+      animation: slide-leave 0.2s ease-out forwards;
     }
 
     li {
@@ -104,11 +102,40 @@
       float: left;
       height: 20px;
       margin-right: 10px;
+      position: relative;
       transition: border-color 0.2s ease-out;
       width: 20px;
 
-      &:before {
-        background: $blue;
+      .mark {
+        &:before {
+          background: $blue;
+          content: '';
+          height: 3px;
+          left: 4px;
+          position: absolute;
+          top: 7px;
+          transform: rotate(-45deg);
+          width: 11px;
+        }
+
+        &:after {
+          background: $blue;
+          content: '';
+          height: 3px;
+          left: 2px;
+          position: absolute;
+          top: 8.2px;
+          transform: rotate(45deg);
+          width: 6px;
+        }
+      }
+
+      .appear-enter {
+        animation: appear-enter 0.1s ease-out forwards;
+      }
+
+      .appear-leave {
+        animation: appear-leave 0.1s ease-out forwards;
       }
     }
   }

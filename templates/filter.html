@@ -1,0 +1,73 @@
+<div id="filter">
+
+	<div id="options">
+
+		<div class="component">
+
+			<h3>Genres<span v-on:click="options.genres = ! options.genres" v-bind:class="{'active': options.genres}">Show options</span></h3>
+
+			<ol v-show="options.genres" transition="slide">
+				<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">
+
+					<div class="check">
+						<span v-show="activeGenre(index)" class="mark" transition="appear"></span>
+					</div>
+
+					<p>{{ genre }}</p>
+
+				</li>
+			</ol>
+
+		</div>
+
+		<div class="component">
+
+			<h3>Years<span v-on:click="options.years = ! options.years" v-bind:class="{'active': options.years}">Show options</span></h3>
+
+			<ol v-show="options.years" transition="slide">
+				<li v-for="(index, year) in years" v-on:click="filterYear(index)">
+
+					<div class="check">
+						<span v-show="activeYear(index)" class="mark" transition="appear"></span>
+					</div>
+
+					<p>&#700;{{ year }}</p>
+
+				</li>
+			</ol>
+
+		</div>
+
+		<div class="component">
+
+			<h3>Other<span v-on:click="options.other = ! options.other" v-bind:class="{'active': options.other}">Show options</span></h3>
+
+			<ol v-show="options.other" transition="slide">
+				<li>
+
+					<div class="check">
+						<span class="mark"></span>
+					</div>
+
+					<p>Include lesser known movies</p>
+
+				</li>
+
+				<li>
+
+					<div class="check">
+						<span class="mark"></span>
+					</div>
+
+					<p>Include bad movies</p>
+
+				</li>
+			</ol>
+
+		</div>
+
+		<a class="button" v-on:click="recommend()">Recommend</a>
+	
+	</div>
+
+</div>

@@ -12,7 +12,7 @@
   }
 }
 
-@keyframes appear {
+@keyframes slide-enter {
   0% {
     opacity: 0;
     transform: translateY(50px);
@@ -24,7 +24,7 @@
   }
 }
 
-@keyframes disappear {
+@keyframes slide-leave {
   0% {
     opacity: 1;
     transform: translateY(0);
@@ -33,5 +33,25 @@
   100% {
     opacity: 0;
     transform: translateY(50px);
+  }
+}
+
+@keyframes appear-enter {
+  0% {
+    transform: scale(0, 0);
+  }
+  
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes appear-leave {
+  0% {
+    transform: scale(1, 1);
+  }
+  
+  100% {
+    transform: scale(0, 0);
   }
 }

@@ -1,0 +1,12 @@
+<div v-if="result" id="movie">
+
+	<div class="poster">
+		<img v-bind:src="result.poster">
+		<h2>{{ result.title }} <span>&nbsp;&bull;&nbsp; {{ result.year }}</span></h2>
+	</div>
+
+	<p>{{ result.overview }}</p>
+
+	<a class="button" target="_blank" v-bind:href="result.trailer">Search for trailers</a>
+
+</div>
