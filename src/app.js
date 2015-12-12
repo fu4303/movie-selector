@@ -18,11 +18,13 @@ Vue.config.debug = true;
       this.$http.get(input.requestUrl + '/genre/movie/list?api_key=' + input.apiKey, function(data) {
         input.populateGenres(data);
       });
+
+      input.populateYears();
     },
 
     methods: {
       activeGenre: function(genre) {
-        return genre == this.selected.genre;
+        return this.selected.genres.indexOf(genre) != -1;
       },
 
       activeYear: function(year) {
@@ -30,18 +32,18 @@ Vue.config.debug = true;
       },
 
       filterGenre: function(genre) {
-        if(this.selected.genre == genre) {
-          this.selected.genre = false;
+        if(! this.activeGenre(genre)) {
+          this.selected.genres.push(genre);
         } else {
-          this.selected.genre = genre;
+          this.selected.genres.splice(this.selected.genres.indexOf(genre), 1);
         }
       },
 
       filterYear: function(year) {
-        if(this.selected.year == year) {
-          this.selected.year = false;
-        } else {
+        if(! this.activeYear(year)) {
           this.selected.year = year;
+        } else {
+          this.selected.year = false;
         }
       },
 

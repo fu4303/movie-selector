@@ -3,7 +3,9 @@
 @import 'variables';
 
 @import 'components/button';
+@import 'components/check';
 @import 'components/movie';
+@import 'components/options';
 @import 'components/filter';
 
 body {
@@ -42,7 +44,7 @@ ol {
   right: 0;
   top: 15%;
   transition: width 0.2s ease-out;
-  width: 320px;
+  width: 380px;
 
   &.ready {
     display: block;

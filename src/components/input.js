@@ -12,20 +12,11 @@ class Input {
     this.minAverage = 6.0;
     this.data = {
       genres: {},
-      years: {
-        1940: '40s',
-        1950: '50s',
-        1960: '60s',
-        1970: '70s',
-        1980: '80s',
-        1990: '90s',
-        2000: '00s',
-        2010: '10s'
-      },
+      years: {},
       ready: true,
       result: false,
       selected: {
-        genre: false,
+        genres: [],
         year: false
       },
       options: {
@@ -51,17 +42,29 @@ class Input {
     this.data.genres = genres;
   }
 
+  populateYears() {
+    this.data.years = {
+      1940: '40s',
+      1950: '50s',
+      1960: '60s',
+      1970: '70s',
+      1980: '80s',
+      2000: '00s',
+      2010: '10s'
+    }
+  }
+
   convertSelection() {
     let parameters = '';
 
-    if(this.data.selected.genre) {
-      console.log(this.data.selected.genre);
-    }
+    // if(this.data.selected.genre) {
+    //   parameters = '&with_genres=' + this.data.selected.genre;
+    // }
 
     if(this.data.selected.year) {
       let year = parseInt(this.data.selected.year);
 
-      parameters = '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';      
+      parameters += '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';      
     }
 
     return parameters;
