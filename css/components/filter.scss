@@ -3,7 +3,7 @@
   margin-bottom: 120px;
   position: absolute;
   right: 0;
-  width: 320px;
+  width: 380px;
 
   #options {
     @include block();
@@ -32,6 +32,7 @@
       font-size: 16px;
       line-height: 1.2;
       margin-bottom: 10px;
+      width: 100%;
     }
 
     .slide-enter {
@@ -46,7 +47,11 @@
       cursor: default;
       float: left;
       margin-top: 15px;
-      width: 50%;
+      width: 45%;
+
+      &:nth-of-type(2n+1) {
+        width: 55%;
+      }
 
       &:hover .check {
         border: 2px solid $blue;

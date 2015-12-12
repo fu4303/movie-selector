@@ -35,6 +35,7 @@ ol {
 }
 
 #app {
+  display: none;
   left: 0;
   margin: 0 auto;
   position: absolute;
@@ -43,7 +44,11 @@ ol {
   transition: width 0.2s ease-out;
   width: 320px;
 
+  &.ready {
+    display: block;
+  }
+
   &.result {
-    width: 980px;
+    width: 1040px;
   }
 }

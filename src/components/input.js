@@ -1,6 +1,7 @@
 'use strict';
 
 class Input {
+
   constructor() {
     this.apiKey = '';
     this.requestUrl = 'http://api.themoviedb.org/3';
@@ -10,16 +11,7 @@ class Input {
     this.minVotes = 50;
     this.minAverage = 6.0;
     this.data = {
-      genres: {
-        4: 'Action',
-        21: 'Comedy',
-        3: 'Romance',
-        20: 'Drama',
-        2: 'Animation',
-        19: 'Thriller',
-        1: 'Western',
-        18: 'Horror'
-      },
+      genres: {},
       years: {
         1940: '40s',
         1950: '50s',
@@ -30,6 +22,7 @@ class Input {
         2000: '00s',
         2010: '10s'
       },
+      ready: true,
       result: false,
       selected: {
         genre: false,
@@ -43,8 +36,27 @@ class Input {
     }
   }
 
+  setBaseConfig(data) {
+    input.baseUrl = data.images.base_url;
+    input.posterSize = data.images.poster_sizes[input.posterSize];
+  }
+
+  populateGenres(data) {
+    let genres = {};
+
+    for(let genre of data.genres) {
+      genres[genre.id] = genre.name;
+    }
+
+    this.data.genres = genres;
+  }
+
   convertSelection() {
     let parameters = '';
+
+    if(this.data.selected.genre) {
+      console.log(this.data.selected.genre);
+    }
 
     if(this.data.selected.year) {
       let year = parseInt(this.data.selected.year);
@@ -72,6 +84,7 @@ class Input {
 
     this.data.result.trailer = this.trailerBase + '?search_query=' + title + '+' + this.data.result.year + '+trailer';
   }
+
 }
 
 let input = new Input();

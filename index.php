@@ -15,7 +15,7 @@
 
 	<body>
 
-		<div id="app" v-bind:class="{'result': result}">
+		<div id="app" v-bind:class="{'result': result, 'ready': ready}">
 
 			<?php require_once('templates/movie.html'); ?>
 

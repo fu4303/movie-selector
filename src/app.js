@@ -5,41 +5,48 @@ Vue.config.debug = true;
 ! function() {
 
   let app = new Vue({
+
     el: '#app',
+
     data: input.data,
+
     ready() {
       this.$http.get(input.requestUrl + '/configuration?api_key=' + input.apiKey, function(data) {
-        input.baseUrl = data.images.base_url;
-        input.posterSize = data.images.poster_sizes[input.posterSize];
+        input.setBaseConfig(data);
       });
 
-      // this.$http.get(input.requestUrl + '/genre/movie/list?api_key=' + input.apiKey, function(data) {
-      //   console.log(data);
-      // });
+      this.$http.get(input.requestUrl + '/genre/movie/list?api_key=' + input.apiKey, function(data) {
+        input.populateGenres(data);
+      });
     },
+
     methods: {
       activeGenre: function(genre) {
-        return genre == input.data.selected.genre;
+        return genre == this.selected.genre;
       },
+
       activeYear: function(year) {
-        return year == input.data.selected.year;
+        return year == this.selected.year;
       },
+
       filterGenre: function(genre) {
-        if(input.data.selected.genre == genre) {
-          input.data.selected.genre = false;
+        if(this.selected.genre == genre) {
+          this.selected.genre = false;
         } else {
-          input.data.selected.genre = genre;
+          this.selected.genre = genre;
         }
       },
+
       filterYear: function(year) {
-        if(input.data.selected.year == year) {
-          input.data.selected.year = false;
+        if(this.selected.year == year) {
+          this.selected.year = false;
         } else {
-          input.data.selected.year = year;
+          this.selected.year = year;
         }
       },
+
       recommend: function() {
-        input.data.result = {};
+        this.result = {};
 
         let parameters = input.convertSelection();
         let request = input.requestUrl + '/discover/movie?api_key=' + input.apiKey + parameters + '&vote_count.gte=' + input.minVotes + '&vote_average.gte=' + input.minAverage;
@@ -50,7 +57,7 @@ Vue.config.debug = true;
           this.$http.get(request + '&page=' + page, function(data) {
             let result = (input.randomize(data.results.length)) - 1;
 
-            input.data.result = data.results[result];
+            this.result = data.results[result];
 
             input.createPath();
             input.setYear();
@@ -59,6 +66,7 @@ Vue.config.debug = true;
         });
       }
     }
+
   });
 
 }();
