@@ -43,20 +43,20 @@
 			<h3>Other<span v-on:click="options.other = ! options.other" v-bind:class="{'active': options.other}">Show options</span></h3>
 
 			<ol v-show="options.other" transition="slide">
-				<li>
+				<li v-on:click="filter('lesserKnown')">
 
 					<div class="check">
-						<span class="mark"></span>
+						<span v-show="active('lesserKnown')" class="mark" transition="appear"></span>
 					</div>
 
 					<p>Include lesser known movies</p>
 
 				</li>
 
-				<li>
+				<li v-on:click="filter('bad')">
 
 					<div class="check">
-						<span class="mark"></span>
+						<span v-show="active('bad')" class="mark" transition="appear"></span>
 					</div>
 
 					<p>Include bad movies</p>

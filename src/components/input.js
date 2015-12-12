@@ -17,7 +17,9 @@ class Input {
       result: false,
       selected: {
         genres: [],
-        year: false
+        year: false,
+        lesserKnown: false,
+        bad: false
       },
       options: {
         genres: false,
@@ -57,14 +59,28 @@ class Input {
   convertSelection() {
     let parameters = '';
 
-    // if(this.data.selected.genre) {
-    //   parameters = '&with_genres=' + this.data.selected.genre;
-    // }
+    if(this.data.selected.genres.length > 0) {
+      parameters += '&with_genres=' + this.data.selected.genres.join('|');
+    }
 
     if(this.data.selected.year) {
       let year = parseInt(this.data.selected.year);
 
       parameters += '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';      
+    }
+
+    if(this.data.selected.lesserKnown) {
+      this.defaultVotes = this.minVotes;
+      this.minVotes = 10;
+    } else if(this.defaultVotes) {
+      this.minVotes = this.defaultVotes;
+    }
+
+    if(this.data.selected.bad) {
+      this.defaultAverage = this.minAverage;
+      this.minAverage = 1.0;
+    } else if(this.defaultAverage) {
+      this.minAverage = this.defaultAverage;
     }
 
     return parameters;
@@ -75,7 +91,9 @@ class Input {
   }
 
   createPath() {
-    this.data.result.poster = this.baseUrl + input.posterSize + this.data.result.backdrop_path;
+    if(this.data.result.backdrop_path) {
+      this.data.result.poster = this.baseUrl + input.posterSize + this.data.result.backdrop_path;
+    }
   }
 
   setYear() {

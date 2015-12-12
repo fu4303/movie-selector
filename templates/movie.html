@@ -1,8 +1,13 @@
 <div v-if="result" id="movie">
 
 	<div class="poster">
-		<img v-bind:src="result.poster">
+
+		<div v-if="result.poster">
+			<img v-bind:src="result.poster">
+		</div>
+
 		<h2>{{ result.title }} <span>&nbsp;&bull;&nbsp; {{ result.year }}</span></h2>
+		
 	</div>
 
 	<p>{{ result.overview }}</p>

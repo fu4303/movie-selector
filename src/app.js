@@ -31,6 +31,10 @@ Vue.config.debug = true;
         return year == this.selected.year;
       },
 
+      active: function(type) {
+        return type == this.selected[type];
+      },
+
       filterGenre: function(genre) {
         if(! this.activeGenre(genre)) {
           this.selected.genres.push(genre);
@@ -44,6 +48,14 @@ Vue.config.debug = true;
           this.selected.year = year;
         } else {
           this.selected.year = false;
+        }
+      },
+
+      filter: function(type) {
+        if(! this.active(type)) {
+          this.selected[type] = type;
+        } else {
+          this.selected[type] = false;
         }
       },
 
