@@ -21,7 +21,7 @@ gulp.task('js', function() {
 	gulp.src(['src/components/*.js', 'src/app.js'])
 	.pipe(babel().on('error', util.log))
 	.pipe(concat('all.min.js'))
-	// .pipe(uglify())
+	.pipe(uglify())
 	.pipe(gulp.dest('dist'))
 });
 

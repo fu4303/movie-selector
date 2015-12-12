@@ -1,7 +1,5 @@
 'use strict';
 
-Vue.config.debug = true;
-
 ! function() {
 
   let app = new Vue({

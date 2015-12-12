@@ -12,6 +12,8 @@
 
 	<p>{{ result.overview }}</p>
 
-	<a class="button" target="_blank" v-bind:href="result.trailer">Search for trailers</a>
+	<div v-if="result.trailer">
+		<a class="button" target="_blank" v-bind:href="result.trailer">Search for trailers</a>
+	</div>
 
 </div>
