@@ -1,0 +1,20 @@
+.orb {
+  background: gold;
+  border-radius: 100%;
+  position: fixed;
+
+  &.small {
+    height: 4px;
+    width: 4px;
+  }
+
+  &.medium {
+    height: 6px;
+    width: 6px;
+  }
+
+  &.large {
+    height: 8px;
+    width: 8px;
+  }
+}

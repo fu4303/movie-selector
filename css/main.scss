@@ -6,6 +6,7 @@
 @import 'components/check';
 @import 'components/movie';
 @import 'components/options';
+@import 'components/orbs';
 @import 'components/filter';
 
 body {
@@ -45,6 +46,7 @@ ol {
   top: 20%;
   transition: top 0.2s ease-out, width 0.2s ease-out;
   width: 380px;
+  z-index: 1;
 
   &.ready {
     display: block;

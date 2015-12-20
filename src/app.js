@@ -22,7 +22,7 @@
 
     methods: {
       activeGenre: function(genre) {
-        return this.selected.genres.indexOf(genre) != -1;
+        return this.selected.genres.indexOf(genre) != - 1;
       },
 
       activeYear: function(year) {
