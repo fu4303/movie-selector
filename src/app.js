@@ -11,15 +11,13 @@
     data: input.data,
 
     ready() {
-      this.$http.get(input.requestUrl + '/configuration?api_key=' + input.apiKey, function(data) {
+      this.$http.get('data/data.js', function(data) {
         input.setBaseConfig(data);
-      });
 
-      this.$http.get(input.requestUrl + '/genre/movie/list?api_key=' + input.apiKey, function(data) {
-        input.populateGenres(data);
+        if(data.date + input.refreshTime < input.timestamp) {
+          input.refreshData(this.$http);
+        }
       });
-
-      input.populateYears();
     },
 
     methods: {

@@ -10,6 +10,8 @@ class Input {
     this.posterSize = 4;
     this.minVotes = 50;
     this.minAverage = 6.0;
+    this.timestamp = Math.round(Date.now() / 1000);
+    this.refreshTime = 604800; // 1 week in seconds
     this.data = {
       genres: {},
       years: {},
@@ -36,11 +38,6 @@ class Input {
         }
       }
     }
-  }
-
-  setBaseConfig(data) {
-    this.baseUrl = data.images.base_url;
-    this.posterSize = data.images.poster_sizes[this.posterSize];
   }
 
   populateGenres(data) {
@@ -114,6 +111,30 @@ class Input {
     var title = this.data.result.title.replace(/\s/g, '+').toLowerCase();
 
     this.data.result.trailer = this.trailerBase + '?search_query=' + title + '+' + this.data.result.year + '+trailer';
+  }
+
+  setBaseConfig(data) {
+    this.populateGenres(data.genres);
+    this.populateYears();
+    this.baseUrl = data.images.base_url;
+    this.posterSize = data.images.poster_sizes[this.posterSize];
+  }
+
+  refreshData(http) {
+    let url = this.requestUrl;
+    let key = this.apiKey;
+
+    http.get(url + '/configuration?api_key=' + key, function(config) {
+      http.get(url + '/genre/movie/list?api_key=' + key, function(genres) {
+        http.post({
+          url: 'data/update.php',
+          params: {
+            images: config.images,
+            genres: genres
+          }
+        });
+      });
+    });
   }
 
 }
