@@ -22,16 +22,25 @@ class Input {
         bad: false
       },
       options: {
-        genres: false,
-        years: false,
-        other: false
+        genres: {
+          state: false,
+          text: 'Show options'
+        },
+        years: {
+          state: false,
+          text: 'Show options'
+        },
+        other: {
+          state: false,
+          text: 'Show options'
+        }
       }
     }
   }
 
   setBaseConfig(data) {
-    input.baseUrl = data.images.base_url;
-    input.posterSize = data.images.poster_sizes[input.posterSize];
+    this.baseUrl = data.images.base_url;
+    this.posterSize = data.images.poster_sizes[this.posterSize];
   }
 
   populateGenres(data) {
@@ -46,13 +55,14 @@ class Input {
 
   populateYears() {
     this.data.years = {
-      1940: '40s',
-      1950: '50s',
-      1960: '60s',
-      1970: '70s',
-      1980: '80s',
-      2000: '00s',
-      2010: '10s'
+      1940: '40s (1940 - 1949)',
+      1950: '50s (1950 - 1959)',
+      1960: '60s (1960 - 1969)',
+      1970: '70s (1970 - 1979)',
+      1980: '80s (1980 - 1989)',
+      1990: '90s (1990 - 1999)',
+      2000: '00s (2000 - 2009)',
+      2010: '10s (2010 - 2019)'
     }
   }
 
@@ -92,7 +102,7 @@ class Input {
 
   createPath() {
     if(this.data.result.backdrop_path) {
-      this.data.result.poster = this.baseUrl + input.posterSize + this.data.result.backdrop_path;
+      this.data.result.poster = this.baseUrl + this.posterSize + this.data.result.backdrop_path;
     }
   }
 
@@ -107,5 +117,3 @@ class Input {
   }
 
 }
-
-let input = new Input();

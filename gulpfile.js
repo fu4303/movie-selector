@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 	minify = require('gulp-minify-css'),
 	rename = require('gulp-rename'),
 	uglify = require('gulp-uglify'),
-	util = require('gulp-util');
+	util = require('gulp-util'),
+	addsrc = require('gulp-add-src');
 
 gulp.task('css', function() {
 	gulp.src('css/main.scss')
@@ -20,8 +21,9 @@ gulp.task('css', function() {
 gulp.task('js', function() {
 	gulp.src(['src/components/*.js', 'src/app.js'])
 	.pipe(babel().on('error', util.log))
+	.pipe(addsrc.prepend(['node_modules/vue/dist/vue.js', 'node_modules/vue-resource/dist/vue-resource.js']))
 	.pipe(concat('all.min.js'))
-	.pipe(uglify())
+	// .pipe(uglify())
 	.pipe(gulp.dest('dist'))
 });
 

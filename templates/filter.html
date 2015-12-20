@@ -4,9 +4,9 @@
 
 		<div class="component">
 
-			<h3>Genres<span v-on:click="options.genres = ! options.genres" v-bind:class="{'active': options.genres}">Show options</span></h3>
+			<h3>Genres<span v-on:click="showOptions('genres')" v-bind:class="{'active': options.genres.state}">{{ options.genres.text }}</span></h3>
 
-			<ol v-show="options.genres" transition="slide">
+			<ol v-show="options.genres.state" transition="slide">
 				<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">
 
 					<div class="check">
@@ -22,9 +22,9 @@
 
 		<div class="component">
 
-			<h3>Years<span v-on:click="options.years = ! options.years" v-bind:class="{'active': options.years}">Show options</span></h3>
+			<h3>Years<span v-on:click="showOptions('years')" v-bind:class="{'active': options.years.state}">{{ options.years.text }}</span></h3>
 
-			<ol v-show="options.years" transition="slide">
+			<ol v-show="options.years.state" transition="slide">
 				<li v-for="(index, year) in years" v-on:click="filterYear(index)">
 
 					<div class="check">
@@ -40,9 +40,9 @@
 
 		<div class="component">
 
-			<h3>Other<span v-on:click="options.other = ! options.other" v-bind:class="{'active': options.other}">Show options</span></h3>
+			<h3>Other<span v-on:click="showOptions('other')" v-bind:class="{'active': options.other.state}">{{ options.other.text }}</span></h3>
 
-			<ol v-show="options.other" transition="slide">
+			<ol v-show="options.other.state" transition="slide">
 				<li v-on:click="filter('lesserKnown')">
 
 					<div class="check">

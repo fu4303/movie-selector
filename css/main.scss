@@ -42,8 +42,8 @@ ol {
   margin: 0 auto;
   position: absolute;
   right: 0;
-  top: 15%;
-  transition: width 0.2s ease-out;
+  top: 20%;
+  transition: top 0.2s ease-out, width 0.2s ease-out;
   width: 380px;
 
   &.ready {
@@ -51,6 +51,7 @@ ol {
   }
 
   &.result {
+    top: 10%;
     width: 1040px;
   }
 }

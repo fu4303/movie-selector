@@ -21,8 +21,6 @@
 
 		</div>
 
-		<script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
-		<script type="text/javascript" src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
 		<script type="text/javascript" src="dist/all.min.js"></script>
 
 	</body>

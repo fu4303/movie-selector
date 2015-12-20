@@ -2,6 +2,8 @@
 
 ! function() {
 
+  let input = new Input();
+
   let app = new Vue({
 
     el: '#app',
@@ -31,6 +33,16 @@
 
       active: function(type) {
         return type == this.selected[type];
+      },
+
+      showOptions: function(type) {
+        this.options[type].state = ! this.options[type].state;
+
+        if(this.options[type].text != 'Show options') {
+          this.options[type].text = 'Show options';
+        } else {
+          this.options[type].text = 'Hide options';
+        }
       },
 
       filterGenre: function(genre) {
