@@ -10,6 +10,10 @@ class Input {
     this.posterSize = 4;
     this.minVotes = 50;
     this.minAverage = 6.0;
+    this.skipGenres = [
+      'Foreign',
+      'TV Movie'
+    ],
     this.timestamp = Math.round(Date.now() / 1000);
     this.refreshTime = 604800; // 1 week in seconds
     this.data = {
@@ -44,6 +48,10 @@ class Input {
     let genres = {};
 
     for(let genre of data.genres) {
+      if(this.skipGenres.indexOf(genre.name) != -1) {
+        continue;
+      }
+
       genres[genre.id] = genre.name;
     }
 

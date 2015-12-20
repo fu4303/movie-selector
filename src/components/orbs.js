@@ -7,24 +7,19 @@
   class Orbs {
 
     constructor() {
-      this.amount = 30;
-      this.duration = 60;
+      this.amount = 100;
+      this.duration = 120;
+      this.reach = 200;
     }
 
-    createOrbs() {
-      let sizes = [
-        'small',
-        'medium',
-        'large'
-      ];
-
+    createStyle() {
       let css = '';
 
       for(let i = 1; i <= this.amount; i++) {
-        let randomLeftStart = input.randomize(101) - 1;
-        let randomTopStart = input.randomize(101) - 1;
-        let randomLeftEnd = input.randomize(101) - 1;
-        let randomTopEnd = input.randomize(101) - 1;
+        let randomLeftStart = input.randomize(this.reach + 1) - 1;
+        let randomTopStart = input.randomize(this.reach + 1) - 1;
+        let randomLeftEnd = input.randomize(this.reach + 1) - 1;
+        let randomTopEnd = input.randomize(this.reach + 1) - 1;
 
         css += '@keyframes test' + i + '{';
           css += '0% {';
@@ -38,13 +33,28 @@
         css += '}';
       }
 
-      let orbs = document.createElement('div');
+      this.appendStyle(css);
+    }
+
+    appendStyle(css) {
       let style = document.createElement('style');
 
       style.type = 'text/css';
       style.appendChild(document.createTextNode(css));
 
       document.head.appendChild(style);
+
+      this.createOrbs();
+    }
+
+    createOrbs() {
+      let sizes = [
+        'small',
+        'medium',
+        'large'
+      ];
+      
+      let orbs = document.createElement('div');
 
       orbs.id = 'orbs';
 
@@ -66,6 +76,6 @@
 
   let orbs = new Orbs;
 
-  orbs.createOrbs();
+  orbs.createStyle();
 
 }();
