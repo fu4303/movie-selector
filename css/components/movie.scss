@@ -1,7 +1,7 @@
 #movie {
   @include block();
   animation: appear-delayed 0.4s ease-out forwards;
-  margin: 0 80px 120px 0;
+  margin: 0 80px 150px 0;
   width: 580px;
 
   .poster,

@@ -2,8 +2,11 @@
 @import 'mixins';
 @import 'variables';
 
+@import 'components/app';
 @import 'components/button';
 @import 'components/check';
+@import 'components/footer';
+@import 'components/logo';
 @import 'components/movie';
 @import 'components/options';
 @import 'components/orb';
@@ -37,23 +40,14 @@ ol {
   padding: 0;
 }
 
-#app {
-  display: none;
-  left: 0;
-  margin: 0 auto;
-  position: absolute;
-  right: 0;
-  top: 20%;
-  transition: top 0.2s ease-out, width 0.2s ease-out;
-  width: 380px;
-  z-index: 1;
+a {
+  color: $gray-dark;
+  text-decoration: none;
 
-  &.ready {
-    display: block;
-  }
-
-  &.result {
-    top: 10%;
-    width: 1040px;
+  &:active,
+  &:focus,
+  &:hover {
+    outline: 0;
+    text-decoration: underline;
   }
 }

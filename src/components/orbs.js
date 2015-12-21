@@ -8,7 +8,7 @@
 
     constructor() {
       this.amount = 100;
-      this.duration = 120;
+      this.duration = 75;
       this.reach = 200;
     }
 
@@ -21,7 +21,7 @@
         let randomLeftEnd = input.randomize(this.reach + 1) - 1;
         let randomTopEnd = input.randomize(this.reach + 1) - 1;
 
-        css += '@keyframes test' + i + '{';
+        css += '@keyframes float' + i + '{';
           css += '0% {';
             css += 'left: ' + randomLeftStart + '%;';
             css += 'top: ' + randomTopStart + '%;';
@@ -61,15 +61,19 @@
       for(let i = 1; i <= this.amount; i++) {
         let orb = document.createElement('div');
 
+        let baseDuration = Math.round(this.duration / 2);
+        let duration = input.randomize(baseDuration);
+        duration = baseDuration + duration;
+
         let randomSize = input.randomize(sizes.length) - 1;
 
         orb.className = 'orb ' + sizes[randomSize];
-        orb.style.animation = 'test' + i + ' ' + this.duration + 's ease-out forwards';
+        orb.style.animation = 'float' + i + ' ' + duration + 's linear infinite alternate';
 
         orbs.appendChild(orb);
       }
 
-      document.body.insertBefore(orbs, null);
+      document.body.appendChild(orbs);
     }
 
   }
