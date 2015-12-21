@@ -10,7 +10,9 @@
 
 		<script type="text/javascript"><?php require_once('parts/analytics.js'); ?></script>
 
-		<title>Movie</title>
+		<?php require_once('parts/favicon.html'); ?>
+
+		<title>What movie to watch?</title>
 	</head>
 
 	<body>
