@@ -9,7 +9,7 @@
     constructor() {
       this.amount = 100;
       this.duration = 75;
-      this.reach = 200;
+      this.reach = 150;
     }
 
     createStyle() {
@@ -21,14 +21,20 @@
         let randomLeftEnd = input.randomize(this.reach + 1) - 1;
         let randomTopEnd = input.randomize(this.reach + 1) - 1;
 
+        if(input.randomize(2) == 1) {
+          maybeNegative = '-';
+        } else {
+          maybeNegative = '';
+        }
+
         css += '@keyframes float' + i + '{';
           css += '0% {';
-            css += 'left: ' + randomLeftStart + '%;';
-            css += 'top: ' + randomTopStart + '%;';
+            css += 'left: ' + maybeNegative + randomLeftStart + '%;';
+            css += 'top: ' + maybeNegative + randomTopStart + '%;';
           css += '}';
           css += '100% {';
-            css += 'left: ' + randomLeftEnd + '%;';
-            css += 'top: ' + randomTopEnd + '%;';
+            css += 'left: ' + maybeNegative + randomLeftEnd + '%;';
+            css += 'top: ' + maybeNegative + randomTopEnd + '%;';
           css += '}';
         css += '}';
       }
