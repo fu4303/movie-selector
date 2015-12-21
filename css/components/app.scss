@@ -4,7 +4,7 @@
   margin: 0 auto;
   position: absolute;
   right: 0;
-  top: 22.5%;
+  top: 20%;
   -webkit-transition: top $animation ease-out, width $animation ease-out;
   transition: top $animation ease-out, width $animation ease-out;
   width: 380px;
@@ -15,7 +15,7 @@
   }
 
   &.result {
-    top: 150px;
+    top: 120px;
     width: 1040px;
   }
 }
