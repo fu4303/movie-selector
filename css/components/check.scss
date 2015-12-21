@@ -5,7 +5,8 @@
   height: 20px;
   margin-right: 10px;
   position: relative;
-  transition: border-color 0.2s ease-out;
+  -webkit-transition: border-color $animation ease-out;
+  transition: border-color $animation ease-out;
   width: 20px;
 
   .mark {
@@ -33,10 +34,10 @@
   }
 
   .appear-enter {
-    animation: appear-enter 0.1s ease-out forwards;
+    animation: appear-enter ($animation / 2) ease-out;
   }
 
   .appear-leave {
-    animation: appear-leave 0.1s ease-out forwards;
+    animation: appear-leave ($animation / 2) ease-out;
   }
 }

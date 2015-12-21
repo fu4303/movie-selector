@@ -35,11 +35,11 @@
   }
 
   .slide-enter {
-    animation: slide-enter 0.2s ease-out forwards;
+    animation: slide-enter $animation ease-out;
   }
 
   .slide-leave {
-    animation: slide-leave 0.2s ease-out forwards;
+    animation: slide-leave $animation ease-out;
   }
 
   li {
@@ -73,13 +73,15 @@
       font-weight: 400;
       margin-top: 4px;
       text-decoration: underline;
-      transition: color 0.2s ease-out;
+      -webkit-transition: color $animation ease-out;
+      transition: color $animation ease-out;
 
       &:before {
         content: '+';
         float: left;
         margin-right: 5px;
-        transition: transform 0.2s ease-out;
+        -webkit-transition: transform $animation ease-out;
+        transition: transform $animation ease-out;
       }
 
       &:hover {
@@ -93,6 +95,7 @@
   }
 
   p {
-    transition: color 0.2s ease-out;
+    -webkit-transition: color $animation ease-out;
+    transition: color $animation ease-out;
   }
 }

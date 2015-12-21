@@ -5,7 +5,8 @@
   position: absolute;
   right: 0;
   top: 22.5%;
-  transition: top 0.2s ease-out, width 0.2s ease-out;
+  -webkit-transition: top $animation ease-out, width $animation ease-out;
+  transition: top $animation ease-out, width $animation ease-out;
   width: 380px;
   z-index: 1;
 

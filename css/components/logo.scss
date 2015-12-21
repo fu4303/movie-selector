@@ -12,7 +12,8 @@
     background-size: 100%;
     height: 20px;
     padding: 10px;
-    transition: all 0.2s ease-out;
+    -webkit-transition: transform $animation ease-out;
+    transition: transform $animation ease-out;
     width: 30px;
   }
 

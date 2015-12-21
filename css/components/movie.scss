@@ -1,6 +1,6 @@
 #movie {
   @include block();
-  animation: appear-delayed 0.4s ease-out forwards;
+  animation: appear-delayed ($animation * 2) ease-out;
   margin: 0 80px 150px 0;
   width: 580px;
 
