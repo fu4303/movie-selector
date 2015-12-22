@@ -16,10 +16,9 @@
 
 	</div>
 
-	<p>{{ result.overview }}</p>
+	<p v-if="result.overview">{{ result.overview }}</p>
+	<p v-else>No description available.</p>
 
-	<div v-if="result.trailer">
-		<a class="button" target="_blank" v-bind:href="result.trailer">Search for trailers</a>
-	</div>
+	<a v-if="result.trailer" v-bind:href="result.trailer" class="button" target="_blank">Search for trailers</a>
 
 </div>

@@ -18,7 +18,7 @@ class Input {
     this.refreshTime = 604800; // 1 week in seconds
     this.data = {
       genres: {},
-      currentGenres: [],
+      currentGenres: {},
       years: {},
       ready: true,
       result: false,
@@ -123,12 +123,12 @@ class Input {
   }
 
   setCurrentGenres(genres) {
-    let currentGenres = [];
+    let currentGenres = {};
 
     for(let genre in genres) {
       let id = genres[genre];
 
-      currentGenres.push(this.data.genres[id]);
+      currentGenres[id] = this.data.genres[id];
     }
 
     this.data.currentGenres = currentGenres;
