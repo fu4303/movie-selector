@@ -5,7 +5,9 @@
 @import 'components/app';
 @import 'components/button';
 @import 'components/check';
+@import 'components/contact';
 @import 'components/footer';
+@import 'components/genres';
 @import 'components/logo';
 @import 'components/movie';
 @import 'components/options';
@@ -41,11 +43,9 @@ ol {
 }
 
 a {
-  color: $gray-dark;
+  color: $gray-medium;
   text-decoration: none;
 
-  &:active,
-  &:focus,
   &:hover {
     outline: 0;
     text-decoration: underline;

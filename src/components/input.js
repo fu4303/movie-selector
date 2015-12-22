@@ -18,6 +18,7 @@ class Input {
     this.refreshTime = 604800; // 1 week in seconds
     this.data = {
       genres: {},
+      currentGenres: [],
       years: {},
       ready: true,
       result: false,
@@ -119,6 +120,18 @@ class Input {
     var title = this.data.result.title.replace(/\s/g, '+').toLowerCase();
 
     this.data.result.trailer = this.trailerBase + '?search_query=' + title + '+' + this.data.result.year + '+trailer';
+  }
+
+  setCurrentGenres(genres) {
+    let currentGenres = [];
+
+    for(let genre in genres) {
+      let id = genres[genre];
+
+      currentGenres.push(this.data.genres[id]);
+    }
+
+    this.data.currentGenres = currentGenres;
   }
 
   setBaseConfig(data) {

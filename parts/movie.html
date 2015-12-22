@@ -10,6 +10,12 @@
 		
 	</div>
 
+	<div id="genres">
+
+		<div v-for="genre in currentGenres">{{ genre }}</div>
+
+	</div>
+
 	<p>{{ result.overview }}</p>
 
 	<div v-if="result.trailer">

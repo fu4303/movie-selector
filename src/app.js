@@ -81,6 +81,7 @@
 
             this.result = data.results[result];
 
+            input.setCurrentGenres(this.result.genre_ids);
             input.createPath();
             input.setYear();
             input.setTrailer();

@@ -2,6 +2,7 @@
   background: $gold;
   border-radius: 100%;
   position: fixed;
+  z-index: -1;
 
   &.small {
     height: 4px;

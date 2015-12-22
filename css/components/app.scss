@@ -8,7 +8,6 @@
   -webkit-transition: top $animation ease-out, width $animation ease-out;
   transition: top $animation ease-out, width $animation ease-out;
   width: 380px;
-  z-index: 1;
 
   &.ready {
     display: block;
