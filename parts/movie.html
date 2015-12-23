@@ -12,7 +12,7 @@
 
 	<div v-if="result.genres" id="genres">
 
-		<div v-for="genre in result.genres">{{ genre }}</div>
+		<a v-bind:class="{'active': activeGenre(index)}" v-on:click="showOptions('genres', true), filterGenre(index)" v-for="(index, genre) in result.genres">{{ genre }}</a>
 
 	</div>
 

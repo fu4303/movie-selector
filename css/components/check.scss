@@ -17,6 +17,7 @@
       left: 4px;
       position: absolute;
       top: 7px;
+      -webkit-transform: rotate(-45deg);
       transform: rotate(-45deg);
       width: 11px;
     }
@@ -28,6 +29,7 @@
       left: 2px;
       position: absolute;
       top: 8.2px;
+      -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
       width: 6px;
     }

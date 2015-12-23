@@ -33,13 +33,17 @@
         return type == this.selected[type];
       },
 
-      showOptions: function(type) {
-        this.options[type].state = ! this.options[type].state;
-
-        if(this.options[type].text != 'Show options') {
-          this.options[type].text = 'Show options';
+      showOptions: function(type, once = false) {
+        if(once) {
+          this.options[type].state = true;
         } else {
+          this.options[type].state = ! this.options[type].state;
+        }
+
+        if(this.options[type].text == 'Show options') {
           this.options[type].text = 'Hide options';
+        } else if(once == false) {
+          this.options[type].text = 'Show options';
         }
       },
 

@@ -1,13 +1,16 @@
 @keyframes appear-delayed {
   0% {
+    -webkit-transform: scale(0, 0);
     transform: scale(0, 0);
   }
 
   50% {
+    -webkit-transform: scale(0, 0); 
     transform: scale(0, 0); 
   }
   
   100% {
+    -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
   }
 }
@@ -15,11 +18,13 @@
 @keyframes slide-enter {
   0% {
     opacity: 0;
+    -webkit-transform: translateY(50px);
     transform: translateY(50px);
   }
   
   100% {
     opacity: 1;
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
 }
@@ -27,31 +32,37 @@
 @keyframes slide-leave {
   0% {
     opacity: 1;
+    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
   
   100% {
     opacity: 0;
+    -webkit-transform: translateY(50px);
     transform: translateY(50px);
   }
 }
 
 @keyframes appear-enter {
   0% {
+    -webkit-transform: scale(0, 0);
     transform: scale(0, 0);
   }
   
   100% {
+    -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
   }
 }
 
 @keyframes appear-leave {
   0% {
+    -webkit-transform: scale(1, 1);
     transform: scale(1, 1);
   }
   
   100% {
+    -webkit-transform: scale(0, 0);
     transform: scale(0, 0);
   }
 }
