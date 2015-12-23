@@ -70,23 +70,24 @@
       recommend: function() {
         this.result = {};
 
-        let parameters = input.convertSelection();
-        let request = input.requestUrl + '/discover/movie?api_key=' + input.apiKey + parameters + '&vote_count.gte=' + input.minVotes + '&vote_average.gte=' + input.minAverage;
+        let recommend = Promise.resolve(input.recommend(this.$http));
 
-        this.$http.get(request, function(data) {
-          let page = input.randomize(data.total_pages);
+        recommend.then(function(result) {
+          input.data.result = result;
 
-          this.$http.get(request + '&page=' + page, function(data) {
-            let result = (input.randomize(data.results.length)) - 1;
+          input.setCurrentGenres(result.genre_ids);
+          input.createPath();
+          input.setYear();
+          input.setTrailer();
 
-            this.result = data.results[result];
+          window.scrollTo(0, 0);
 
-            input.setCurrentGenres(this.result.genre_ids);
-            input.createPath();
-            input.setYear();
-            input.setTrailer();
-          });
+          for(let option in input.data.options) {
+
+            input.data.options[option].state = false;
+          }
         });
+
       }
     }
 

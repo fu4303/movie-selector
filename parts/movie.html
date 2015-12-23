@@ -10,9 +10,9 @@
 		
 	</div>
 
-	<div id="genres">
+	<div v-if="result.genres" id="genres">
 
-		<div v-for="genre in currentGenres">{{ genre }}</div>
+		<div v-for="genre in result.genres">{{ genre }}</div>
 
 	</div>
 

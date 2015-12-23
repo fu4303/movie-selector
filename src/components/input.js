@@ -102,10 +102,6 @@ class Input {
     return parameters;
   }
 
-  randomize(amount) {
-    return Math.ceil(Math.random() * amount);
-  }
-
   createPath() {
     if(this.data.result.backdrop_path) {
       this.data.result.poster = this.baseUrl + this.posterSize + this.data.result.backdrop_path;
@@ -131,7 +127,7 @@ class Input {
       currentGenres[id] = this.data.genres[id];
     }
 
-    this.data.currentGenres = currentGenres;
+    this.data.result.genres = currentGenres;
   }
 
   setBaseConfig(data) {
@@ -139,6 +135,10 @@ class Input {
     this.populateYears();
     this.baseUrl = data.images.base_url;
     this.posterSize = data.images.poster_sizes[this.posterSize];
+  }
+
+  randomize(amount) {
+    return Math.ceil(Math.random() * amount);
   }
 
   refreshData(http) {
@@ -154,6 +154,22 @@ class Input {
             genres: genres
           }
         });
+      });
+    });
+  }
+
+  recommend(http) {
+    let parameters = this.convertSelection();
+    let request = this.requestUrl + '/discover/movie?api_key=' + this.apiKey + parameters + '&vote_count.gte=' + this.minVotes + '&vote_average.gte=' + this.minAverage;
+    let randomize = this.randomize;
+
+    return http.get(request, function(data) {
+      let page = randomize(data.total_pages);
+
+      return http.get(request + '&page=' + page, function(data) {
+        let result = randomize(data.results.length) - 1;
+
+        return data.results[result];
       });
     });
   }
