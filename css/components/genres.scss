@@ -27,5 +27,19 @@
     &:first-of-type {
       margin-left: 0;
     }
+
+    &.active:before {
+      content: '×';
+      float: left;
+      opacity: 0;
+      top: -5px;
+      transition: opacity $animation ease-out, width $animation ease-out;
+      width: 0;
+    }
+
+    &.active:hover:before {
+      opacity: 1;
+      width: 15px;
+    }
   }
 }
