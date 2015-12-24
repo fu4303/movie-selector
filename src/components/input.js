@@ -9,7 +9,7 @@ class Input {
     this.trailerBase = 'https://www.youtube.com/results';
     this.posterSize = 4;
     this.minVotes = 50;
-    this.minAverage = 6.0;
+    this.minAverage = 5.0;
     this.skipGenres = [
       'Foreign',
       'TV Movie'
@@ -41,7 +41,8 @@ class Input {
           state: false,
           text: 'Show options'
         }
-      }
+      },
+      visible: false
     }
   }
 

@@ -6,7 +6,7 @@
 @import 'components/button';
 @import 'components/check';
 @import 'components/contact';
-@import 'components/footer';
+@import 'components/notice';
 @import 'components/genres';
 @import 'components/logo';
 @import 'components/movie';
@@ -47,7 +47,10 @@ a {
   text-decoration: none;
 
   &:hover {
-    outline: 0;
     text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 0;
   }
 }

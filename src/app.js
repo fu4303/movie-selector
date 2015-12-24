@@ -72,22 +72,25 @@
       },
 
       recommend: function() {
-        this.result = {};
+        window.scrollTo(0, 0);
+
+        input.data.result = {};
 
         let recommend = Promise.resolve(input.recommend(this.$http));
 
         recommend.then(function(result) {
           input.data.result = result;
 
+          setTimeout(function() {
+            input.data.visible = true;
+          }, 400);
+
           input.setCurrentGenres(result.genre_ids);
           input.createPath();
           input.setYear();
           input.setTrailer();
 
-          window.scrollTo(0, 0);
-
           for(let option in input.data.options) {
-
             input.data.options[option].state = false;
           }
         });

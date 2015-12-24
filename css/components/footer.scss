@@ -1,12 +1,17 @@
-#footer {
-  @include box-shadow();
+#notice {
+  @include block();
   background: $white;
   bottom: 0;
   font-size: 12px;
   line-height: 20px;
-  position: fixed;
+  position: absolute;
   text-align: center;
   width: 100%;
+
+  @media(min-height: 611px) {
+    float: left;
+    position: static;
+  }
 
   a {
     display: inline-block;
