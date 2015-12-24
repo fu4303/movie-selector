@@ -35,10 +35,12 @@
   }
 
   .slide-enter {
+    -webkit-animation: slide-enter $animation ease-out;
     animation: slide-enter $animation ease-out;
   }
 
   .slide-leave {
+    -webkit-animation: slide-leave $animation ease-out;
     animation: slide-leave $animation ease-out;
   }
 

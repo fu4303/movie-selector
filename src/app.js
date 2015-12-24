@@ -81,10 +81,6 @@
         recommend.then(function(result) {
           input.data.result = result;
 
-          setTimeout(function() {
-            input.data.visible = true;
-          }, 400);
-
           input.setCurrentGenres(result.genre_ids);
           input.createPath();
           input.setYear();

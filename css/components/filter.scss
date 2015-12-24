@@ -1,4 +1,5 @@
 #filter {
+  -webkit-animation: appear-enter $animation ease-out;
   animation: appear-enter $animation ease-out;
   margin-bottom: 120px;
   position: absolute;

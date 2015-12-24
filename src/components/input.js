@@ -41,8 +41,7 @@ class Input {
           state: false,
           text: 'Show options'
         }
-      },
-      visible: false
+      }
     }
   }
 
