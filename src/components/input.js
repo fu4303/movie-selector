@@ -22,6 +22,7 @@ class Input {
       years: {},
       ready: true,
       result: false,
+      animate: false,
       selected: {
         genres: [],
         year: false,

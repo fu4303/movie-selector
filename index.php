@@ -8,7 +8,9 @@
 
 		<?php require_once('parts/top.html'); ?>
 
-		<div id="app" v-bind:class="{'result': result, 'ready': ready}">
+		<div id="app" v-bind:class="{'ready': ready, 'animate': animate}">
+
+			<?php require_once('parts/loading.html'); ?>
 
 			<?php require_once('parts/movie.html'); ?>
 

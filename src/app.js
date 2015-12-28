@@ -72,20 +72,28 @@
       },
 
       recommend: function() {
+        // On first recommendation, animate
+        input.data.animate = true;
+
+        // Remove previous result
+        input.data.result = false;
+
+        // Scroll to top
         window.scrollTo(0, 0);
 
-        input.data.result = {};
-
+        // Retrieve recommendation
         let recommend = Promise.resolve(input.recommend(this.$http));
 
         recommend.then(function(result) {
           input.data.result = result;
 
+          // Set data for result
           input.setCurrentGenres(result.genre_ids);
           input.createPath();
           input.setYear();
           input.setTrailer();
 
+          // Close all open option rows
           for(let option in input.data.options) {
             input.data.options[option].state = false;
           }

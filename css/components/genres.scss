@@ -1,9 +1,6 @@
 #genres {
   float: left;
-  height: 32px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  width: 100%;
+  margin: 0 0 10px -10px;
 
   a {
     border: 1px solid $purple;
@@ -13,8 +10,9 @@
     float: left;
     font-size: 14px;
     line-height: 30px;
-    margin-left: 10px;
+    margin: 0 0 10px 10px;
     padding: 0 10px;
+    position: relative;
     transition: background-color $animation ease-out, color $animation ease-out;
 
     &.active,
@@ -24,22 +22,16 @@
       text-decoration: none;
     }
 
-    &:first-of-type {
-      margin-left: 0;
-    }
-
-    &.active:before {
-      content: '×';
-      float: left;
-      opacity: 0;
-      top: -5px;
-      transition: opacity $animation ease-out, width $animation ease-out;
-      width: 0;
-    }
-
     &.active:hover:before {
-      opacity: 1;
-      width: 15px;
+      background: $purple-alpha;
+      content: '×';
+      font-size: 18px;
+      font-weight: 700;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      width: 100%;
     }
   }
 }
