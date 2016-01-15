@@ -1,0 +1,13 @@
+# Turn on rewrite engine
+RewriteEngine On
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$
+RewriteRule ^.*$ http://%1/ [R=301,L]
+
+# Redirect everything to home
+RewriteRule ^\w+$ / [R=302,L]
+
+# Make sure every request is handled by main template
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.*$ index.php [L]

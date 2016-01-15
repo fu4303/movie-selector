@@ -81,11 +81,6 @@
         // Scroll to top
         window.scrollTo(0, 0);
 
-        // Close all open option rows
-        for(let option in input.data.options) {
-          input.data.options[option].state = false;
-        }
-
         // Retrieve recommendation
         let recommend = Promise.resolve(input.recommend(this.$http));
 
