@@ -21,19 +21,19 @@
     },
 
     methods: {
-      activeGenre: function(genre) {
+      activeGenre(genre) {
         return this.selected.genres.indexOf(genre) != - 1;
       },
 
-      activeYear: function(year) {
+      activeYear(year) {
         return year == this.selected.year;
       },
 
-      active: function(type) {
+      active(type) {
         return type == this.selected[type];
       },
 
-      showOptions: function(type, once = false) {
+      showOptions(type, once = false) {
         if(once) {
           this.options[type].state = true;
         } else {
@@ -47,7 +47,7 @@
         }
       },
 
-      filterGenre: function(genre) {
+      filterGenre(genre) {
         if(! this.activeGenre(genre)) {
           this.selected.genres.push(genre);
         } else {
@@ -55,7 +55,7 @@
         }
       },
 
-      filterYear: function(year) {
+      filterYear(year) {
         if(! this.activeYear(year)) {
           this.selected.year = year;
         } else {
@@ -63,7 +63,7 @@
         }
       },
 
-      filter: function(type) {
+      filter(type) {
         if(! this.active(type)) {
           this.selected[type] = type;
         } else {
@@ -71,12 +71,12 @@
         }
       },
 
-      recommend: function() {
+      recommend() {
         // On first recommendation, animate
-        input.data.animate = true;
+        this.animate = true;
 
         // Remove previous result
-        input.data.result = false;
+        this.result = false;
 
         // Scroll to top
         window.scrollTo(0, 0);
@@ -84,8 +84,8 @@
         // Retrieve recommendation
         let recommend = Promise.resolve(input.recommend(this.$http));
 
-        recommend.then(function(result) {
-          input.data.result = result;
+        recommend.then((result) => {
+          this.result = result;
 
           // Set data for result
           input.setCurrentGenres(result.genre_ids);

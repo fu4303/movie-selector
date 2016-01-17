@@ -2,7 +2,7 @@
   @include block();
   -webkit-animation: appear-delayed ($animation * 2) ease-out;
   animation: appear-delayed ($animation * 2) ease-out;
-  margin: 0 80px 120px 0;
+  margin-bottom: $margin-bottom;
   width: 580px;
 
   .poster,
