@@ -21,7 +21,11 @@ gulp.task('css', function() {
 gulp.task('js', function() {
 	gulp.src(['src/components/*.js', 'src/app.js'])
 	.pipe(babel().on('error', util.log))
-	.pipe(addsrc.prepend(['node_modules/vue/dist/vue.min.js', 'node_modules/vue-resource/dist/vue-resource.min.js']))
+	.pipe(addsrc.prepend([
+		'node_modules/babel-polyfill/dist/polyfill.min.js',
+		'node_modules/vue/dist/vue.min.js',
+		'node_modules/vue-resource/dist/vue-resource.min.js'
+	]))
 	.pipe(concat('all.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('dist'))
