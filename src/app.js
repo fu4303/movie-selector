@@ -11,14 +11,10 @@
     data: input.data,
 
     ready() {
-      this.$http.get('data/data.js', function(data) {       
-        if(data.date) {
-          input.setBaseConfig(data);
+      this.$http.get('data/data.js', function(data) {
+        input.setBaseConfig(data);
 
-          if(data.date + input.refreshTime < input.timestamp) {
-            input.refreshData(this.$http);
-          }
-        } else {
+        if(data.date + input.refreshTime < input.timestamp) {
           input.refreshData(this.$http);
         }
       });
