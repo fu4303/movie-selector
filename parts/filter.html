@@ -7,7 +7,7 @@
 			<h3>Genres<span v-on:click="showOptions('genres')" v-bind:class="{'active': options.genres.state}">{{ options.genres.text }}</span></h3>
 
 			<ol v-show="options.genres.state" transition="slide">
-				<li v-for="(index, genre) in genres" v-on:click="filterGenre(index)">
+				<li v-for="(index, genre) in genres | orderBy 'genre'" v-on:click="filterGenre(index)">
 
 					<div class="check">
 						<span v-show="activeGenre(index)" class="mark" transition="appear"></span>
