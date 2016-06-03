@@ -15,7 +15,7 @@ gulp.task('css', function() {
 	.pipe(sass().on('error', util.log))
 	.pipe(rename('all.min.css'))
 	.pipe(minify())
-	.pipe(gulp.dest('dist'))
+	.pipe(gulp.dest('src/output'))
 });
 
 gulp.task('js', function() {
@@ -28,7 +28,7 @@ gulp.task('js', function() {
 	]))
 	.pipe(concat('all.min.js'))
 	.pipe(uglify())
-	.pipe(gulp.dest('dist'))
+	.pipe(gulp.dest('src/output'))
 });
 
 gulp.task('watch', function() {

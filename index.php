@@ -18,7 +18,7 @@
 
 		</div>
 
-		<script type="text/javascript" src="dist/all.min.js"></script>
+		<script type="text/javascript" src="src/output/all.min.js"></script>
 
 	</body>
 

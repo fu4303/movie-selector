@@ -1,4 +1,4 @@
-[![whatmovie.watch](screenshot.png)](http://whatmovie.watch/)
+[![whatmovie.watch](images/screenshot.png)](http://whatmovie.watch/)
 
 # Get a movie recommendation
 
