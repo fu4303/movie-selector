@@ -11,8 +11,8 @@ class Input {
     this.minVotes = 50;
     this.minAverage = 5.0;
     this.skipGenres = [
-      'Foreign',
-      'TV Movie'
+      10769, // Foreign
+      10770 // TV Movie
     ],
     this.timestamp = Math.round(Date.now() / 1000);
     this.refreshTime = 604800; // 1 week in seconds
@@ -46,15 +46,23 @@ class Input {
     }
   }
 
+  skipGenre(id) {
+    id = parseInt(id);
+
+    return this.skipGenres.indexOf(id) != -1;
+  }
+
   populateGenres(data) {
     let genres = {};
 
     for(let genre of data.genres) {
-      if(this.skipGenres.indexOf(genre.name) != -1) {
+      let id = genre.id;
+
+      if(this.skipGenre(id)) {
         continue;
       }
 
-      genres[genre.id] = genre.name;
+      genres[id] = genre.name;
     }
 
     this.data.genres = genres;
@@ -124,6 +132,10 @@ class Input {
 
     for(let genre in genres) {
       let id = genres[genre];
+
+      if(this.skipGenre(id)) {
+        continue;
+      }
 
       currentGenres[id] = this.data.genres[id];
     }
