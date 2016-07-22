@@ -1,24 +1,19 @@
 <div v-if="result" id="movie">
+  <div class="poster">
+    <div v-if="result.poster">
+      <img v-bind:src="result.poster">
+    </div>
 
-	<div class="poster">
+    <h2>{{ result.title }} <span>&nbsp;&bull;&nbsp; {{ result.year }}</span></h2>
+  </div>
 
-		<div v-if="result.poster">
-			<img v-bind:src="result.poster">
-		</div>
+  <div v-if="showMeta()" id="meta">
+    <div class="meta-item rating">Rating: <span>{{ result.rating }}</span></div>
+    <a class="meta-item" v-bind:class="{'active': activeGenre(index)}" v-on:click="showOptions('genres', true), filterGenre(index)" v-for="(index, genre) in result.genres">{{ genre }}</a>
+  </div>
 
-		<h2>{{ result.title }} <span>&nbsp;&bull;&nbsp; {{ result.year }}</span></h2>
-		
-	</div>
+  <p v-if="result.overview">{{ result.overview }}</p>
+  <p v-else>No description available.</p>
 
-	<div v-if="result.genres" id="genres">
-
-		<a v-bind:class="{'active': activeGenre(index)}" v-on:click="showOptions('genres', true), filterGenre(index)" v-for="(index, genre) in result.genres">{{ genre }}</a>
-
-	</div>
-
-	<p v-if="result.overview">{{ result.overview }}</p>
-	<p v-else>No description available.</p>
-
-	<a v-if="result.trailer" v-bind:href="result.trailer" class="button" target="_blank">Search for trailers</a>
-
+  <a v-bind:href="result.trailer" class="button" target="_blank">Search for trailers</a>
 </div>

@@ -122,9 +122,13 @@ class Input {
   }
 
   setTrailer() {
-    var title = this.data.result.title.replace(/\s/g, '+').toLowerCase();
+    let title = this.data.result.title.replace(/\s/g, '+').toLowerCase();
 
     this.data.result.trailer = this.trailerBase + '?search_query=' + title + '+' + this.data.result.year + '+trailer';
+  }
+
+  setRating() {
+    this.data.result.rating = false;
   }
 
   setCurrentGenres(genres) {

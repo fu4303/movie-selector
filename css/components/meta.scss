@@ -1,8 +1,8 @@
-#genres {
+#meta {
   float: left;
   margin: 0 0 10px -10px;
 
-  a {
+  .meta-item {
     border: 1px solid $purple;
     border-radius: $border-radius;
     color: $purple;
@@ -32,6 +32,17 @@
       position: absolute;
       text-align: center;
       width: 100%;
+    }
+
+    &.rating {
+      background: $gold-dark;
+      border: 1px solid $gold-dark;
+      color: $white;
+      cursor: default;
+
+      span {
+        font-weight: 700;
+      }
     }
   }
 }

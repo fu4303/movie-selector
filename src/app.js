@@ -33,6 +33,10 @@
         return type == this.selected[type];
       },
 
+      showMeta() {
+        return this.result.genres || this.result.rating;
+      },
+
       showOptions(type, once = false) {
         if(once) {
           this.options[type].state = true;
@@ -92,6 +96,7 @@
           input.createPath();
           input.setYear();
           input.setTrailer();
+          input.setRating();
         });
 
       }
