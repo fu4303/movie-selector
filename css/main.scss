@@ -47,6 +47,7 @@ a {
   color: $gray-medium;
   text-decoration: none;
 
+  &:active,
   &:hover {
     text-decoration: underline;
   }

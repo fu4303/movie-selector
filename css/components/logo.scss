@@ -16,8 +16,11 @@
     width: 30px;
   }
 
-  &:hover div {
-    -webkit-transform: scale(1.2, 1.2);
-    transform: scale(1.2, 1.2);
+  &:active,
+  &:hover {
+    div {
+      -webkit-transform: scale(1.2, 1.2);
+      transform: scale(1.2, 1.2);
+    }
   }
 }

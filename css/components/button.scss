@@ -12,6 +12,7 @@
   transition: background-color $animation ease-out;
   width: 250px;
 
+  &:active,
   &:hover {
     background: #8C78F0;
     text-decoration: none;
