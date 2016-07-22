@@ -8,7 +8,7 @@
   </div>
 
   <div v-if="showMeta()" id="meta">
-    <div class="meta-item rating">Rating: <span>{{ result.rating }}</span></div>
+    <div v-if="result.rating" class="meta-item rating">Rating: <span>{{ result.rating }}</span></div>
     <a class="meta-item" v-bind:class="{'active': activeGenre(index)}" v-on:click="showOptions('genres', true), filterGenre(index)" v-for="(index, genre) in result.genres">{{ genre }}</a>
   </div>
 

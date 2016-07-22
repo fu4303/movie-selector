@@ -127,8 +127,23 @@ class Input {
     this.data.result.trailer = this.trailerBase + '?search_query=' + title + '+' + this.data.result.year + '+trailer';
   }
 
+  // Round ratings off to half numbers
   setRating() {
-    this.data.result.rating = false;
+    let rating = this.data.result.vote_average;
+    let decimal = rating.toFixed(2);
+
+    decimal = decimal.split('.');
+    decimal = parseInt(decimal[1]);
+
+    if (decimal >= 25 && decimal < 75) {
+      rating = Math.floor(rating) + ',5';
+    } else {
+      rating = Math.round(rating);
+    }
+
+    console.log(this.data.result.vote_average, rating);
+
+    this.data.result.rating = rating;
   }
 
   setCurrentGenres(genres) {
