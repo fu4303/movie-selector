@@ -141,8 +141,6 @@ class Input {
       rating = Math.round(rating);
     }
 
-    console.log(this.data.result.vote_average, rating);
-
     this.data.result.rating = rating;
   }
 

@@ -13,5 +13,8 @@
     "gulp-util": "^3.0.7",
     "vue": "^1.0.24",
     "vue-resource": "^0.7.2"
+  },
+  "scripts": {
+    "postinstall": "gulp"
   }
 }

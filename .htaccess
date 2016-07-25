@@ -6,8 +6,4 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 # Redirect everything to home
-RewriteRule ^\w+$ / [R=301,L]
-
-# Make sure every request is handled by main template
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^.*$ index.php [L]
+RewriteRule ^[\w\/]+$ / [R=302,L]
