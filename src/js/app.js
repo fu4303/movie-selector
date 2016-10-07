@@ -18,5 +18,28 @@ new Vue({
   data: {
     animate: false,
     ready: false
+  },
+  created: function() {
+    const date = Math.round(Date.now() / 1000);
+
+    if (localStorage.getItem('posterBase') && localStorage.getItem('timestamp') && localStorage.getItem('urlBase')) {
+      const weekInSeconds = 604800;
+
+      if (date < (parseInt(localStorage.getItem('timestamp')) + weekInSeconds)) {
+        this.ready = true;
+
+        return;
+      }
+    }
+
+    http(api.images).subscribe({
+      next: (response) => {
+        localStorage.setItem('posterBase', response.images.poster_sizes[4]);
+        localStorage.setItem('timestamp', date);
+        localStorage.setItem('urlBase', response.images.base_url);
+
+        this.ready = true;
+      }
+    });
   }
 });
