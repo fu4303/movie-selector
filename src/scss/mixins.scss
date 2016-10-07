@@ -1,0 +1,11 @@
+@mixin block() {
+	@include box-shadow();
+	background: $white;
+	border-radius: $border-radius;
+	float: left;
+	padding: 40px 40px 50px;
+}
+
+@mixin box-shadow() {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}

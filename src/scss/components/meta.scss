@@ -1,0 +1,49 @@
+#meta {
+  float: left;
+  margin: 0 0 10px -10px;
+
+  .meta-item {
+    border: 1px solid $purple;
+    border-radius: $border-radius;
+    color: $purple;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0 0 10px 10px;
+    padding: 0 10px;
+    position: relative;
+    transition: background-color $animation ease-out, color $animation ease-out;
+
+    &.active,
+    &:hover {
+      background: $purple;
+      color: $white;
+      text-decoration: none;
+    }
+
+    &.active:hover:before {
+      background: $purple-alpha;
+      content: '×';
+      font-size: 18px;
+      font-weight: 700;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+
+    &.rating {
+      background: $gold-dark;
+      border: 1px solid $gold-dark;
+      color: $white;
+      cursor: default;
+      margin-right: 10px;
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+}

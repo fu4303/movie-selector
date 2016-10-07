@@ -1,0 +1,21 @@
+.button {
+	background: $blue;
+  border-radius: $border-radius;
+  color: $white;
+  cursor: pointer;
+  display: block;
+  line-height: 60px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: background-color $animation ease-out;
+  transition: background-color $animation ease-out;
+  width: 250px;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: #8C78F0;
+    text-decoration: none;
+  }
+}

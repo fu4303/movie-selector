@@ -1,3 +1,3 @@
 'use strict';
 
-require('../scss/app.scss');
+import '../scss/app.scss';

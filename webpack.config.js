@@ -9,7 +9,7 @@ module.exports = {
     filename: 'src/js/output/bundle.js'
   },
   plugins: [
-    new extractText('src/css/output/bundle.css'),
+    new extractText('src/scss/output/bundle.css'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'

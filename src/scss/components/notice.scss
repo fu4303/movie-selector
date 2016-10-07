@@ -1,0 +1,15 @@
+#notice {
+  @include block();
+  -webkit-animation: appear-enter $animation ease-out;
+  animation: appear-enter $animation ease-out;
+  display: none;
+  font-size: 12px;
+  margin-top: 40px;
+  padding: 20px 40px;
+  text-align: center;
+  width: 100%;
+}
+
+.animate #notice {
+  display: block;
+}
