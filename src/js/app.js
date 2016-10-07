@@ -6,12 +6,15 @@ import api from './api.js';
 import http from './http.js';
 
 import Vue from 'vue';
+
+import Filter from './components/Filter.js';
 import Loading from './components/Loading.js';
 import Result from './components/Result.js';
 
 new Vue({
   el: '#app',
   components: {
+    'movie-filter': Filter,
     'loading': Loading,
     'result': Result
   },
