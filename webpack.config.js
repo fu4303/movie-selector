@@ -8,22 +8,11 @@ module.exports = {
   output: {
     filename: 'src/js/output/bundle.js'
   },
-  plugins: [
-    new extractText('src/scss/output/bundle.css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      }
-    })
-  ],
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  },
   module: {
     loaders: [
       {
@@ -44,5 +33,21 @@ module.exports = {
         loader: extractText.extract('style', 'css!sass')
       }
     ]
-  }
+  },
+  plugins: [
+    new extractText('src/scss/output/bundle.css'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      }
+    })
+  ],
 };
