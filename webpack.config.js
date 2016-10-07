@@ -16,12 +16,8 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.html/,
-        loader: 'html'
-      },
-      {
         exclude: /node_modules/,
-        test: /\.js/,
+        test: /\.js$/,
         loader: 'babel',
         query: {
           compact: true,
@@ -29,7 +25,7 @@ module.exports = {
         }
       },
       {
-        test: /\.scss/,
+        test: /\.scss$/,
         loader: extractText.extract('style', 'css!sass')
       }
     ]
