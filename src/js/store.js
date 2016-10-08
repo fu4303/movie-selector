@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import rating from './rating.js';
+import data from './data.js';
 
 Vue.use(Vuex);
 
@@ -55,11 +55,7 @@ const store = new Vuex.Store({
       state.urlBase = localStorage.getItem('urlBase');
     },
     setResult: (state, result) => {
-      result.poster = state.urlBase + state.posterBase + result.backdrop_path;
-      result.rating = rating.create(result.vote_average);
-      result.year = result.release_date.slice(0, 4);
-
-      state.result = result;
+      state.result = data.convert(result);
     }
   }
 });

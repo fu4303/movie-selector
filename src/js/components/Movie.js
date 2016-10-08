@@ -12,12 +12,17 @@ export default {
       <div id="meta">
         <div class="meta-item rating">Rating: <span>{{ result.rating }}</span></div>
 
-        
+        <a class="meta-item" v-for="genre in genres">{{ genre.name }}</a>
       </div>
     </div>
   `,
+  data: () => {
+    return {
+      genres: store.state.active.genres,
+    }
+  },
   computed: {
-    result: function() {
+    result: () => {
       return store.state.result;
     }
   },
