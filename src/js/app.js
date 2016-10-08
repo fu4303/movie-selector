@@ -2,7 +2,7 @@
 
 import '../scss/app.scss';
 
-import Observable from 'rxjs/Observable';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import Vue from 'vue';
 
@@ -12,6 +12,7 @@ import Result from './components/Result.js';
 
 import api from './api.js';
 import http from './http.js';
+import data from './data.js';
 import store from './store.js';
 
 new Vue({
@@ -43,13 +44,9 @@ new Vue({
     Observable.combineLatest(http(api.genres), http(api.images), (genres, images) => {
       return {genres: genres, images: images};
     }).subscribe({
-      next: (res) => {
-        localStorage.setItem('genres', JSON.stringify(res.genres.genres));
-        localStorage.setItem('posterBase', res.images.images.poster_sizes[4]);
-        localStorage.setItem('urlBase', res.images.images.base_url);
-        localStorage.setItem('timestamp', date);
+      next: response => {
+        data.set(response, date);
 
-        store.commit('setData');
         this.ready = true;
       }
     });

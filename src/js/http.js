@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 
 export default (url) => {
-  return Observable.create((observer) => {
+  return Observable.create(observer => {
     const request = new XMLHttpRequest();
 
     request.open('GET', url);
