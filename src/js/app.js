@@ -2,7 +2,7 @@
 
 import '../scss/app.scss';
 
-import {Observable} from 'rxjs/Observable';
+import Observable from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import Vue from 'vue';
 

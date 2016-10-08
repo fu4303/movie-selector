@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Vuex from 'vuex'
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+    genres: null,
     posterBase: null,
     urlBase: null
   },
