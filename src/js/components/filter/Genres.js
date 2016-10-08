@@ -3,7 +3,7 @@ import store from '../../store.js';
 export default {
   template: `
     <div class="component">
-      <h3>Genres<span v-on:click="toggleShow()" v-bind:class="{'active': active}">{{ optionsText }}</span></h3>
+      <h3>Genres<span v-on:click="toggleShow()" v-bind:class="{'active': active}">{{ setText() }}</span></h3>
 
       <transition name="slide">
         <ol v-show="active">
@@ -23,13 +23,19 @@ export default {
   data: () => {
     return {
       active: false,
-      genres: store.state.genres,
-      optionsText: 'Show options'
+      genres: store.state.genres
     };
   },
   methods: {
     isActive: id => {
       return store.state.active.genres.indexOf(id) !== -1;
+    },
+    setText: function()  {
+      if (this.active) {
+        return 'Hide options';
+      } else {
+        return 'Show options';
+      }
     },
     toggleActive: id => {
       store.commit('toggleActive', {
@@ -39,12 +45,6 @@ export default {
     },
     toggleShow: function() {
       this.active = !this.active;
-
-      if (this.optionsText !== 'Show options') {
-        this.optionsText = 'Show options';
-      } else {
-        this.optionsText = 'Hide options';
-      }
     }
   }
 }
