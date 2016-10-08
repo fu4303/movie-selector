@@ -14,6 +14,9 @@ export default {
 
         <a class="meta-item" v-for="genre in result.genres" v-bind:class="{'active': isActive(genre.id)}" v-on:click="toggleActive(genre.id)">{{ genre.name }}</a>
       </div>
+
+      <p v-if="result.overview">{{ result.overview }}</p>
+      <p v-else>No description available.</p>
     </div>
   `,
   computed: {
