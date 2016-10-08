@@ -8,7 +8,7 @@ import Vue from 'vue';
 
 import Filters from './components/Filters.js';
 import Loading from './components/Loading.js';
-import Result from './components/Result.js';
+import Movie from './components/Movie.js';
 
 import api from './api.js';
 import http from './http.js';
@@ -20,11 +20,15 @@ new Vue({
   components: {
     'movie-filters': Filters,
     'loading': Loading,
-    'result': Result
+    'movie': Movie
   },
   data: {
-    animate: false,
     ready: false
+  },
+  methods: {
+    animate: () => {
+      return store.state.animate;
+    }
   },
   created: function() {
     const date = Math.round(Date.now() / 1000);

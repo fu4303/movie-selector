@@ -10,6 +10,7 @@ const store = new Vuex.Store({
       years: [],
       ratings: [],
     },
+    animate: false,
     genres: null,
     posterBase: null,
     ratings: [
@@ -30,6 +31,13 @@ const store = new Vuex.Store({
     ],
   },
   mutations: {
+    removeResult: state => {
+      state.result = false;
+
+      if (!state.animate) {
+        state.animate = true;
+      }
+    },
     toggleActive: (state, payload) => {
       const index = state.active[payload.type].indexOf(payload.id);
 
