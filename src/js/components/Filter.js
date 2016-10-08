@@ -1,5 +1,6 @@
 import Genres from './filter/Genres.js';
 import Years from './filter/Years.js';
+import Ratings from './filter/Ratings.js';
 
 export default {
   template: `
@@ -7,11 +8,13 @@ export default {
       <div id="options">
         <genres></genres>
         <years></years>
+        <ratings></ratings>
       </div>
     </div>
   `,
   components: {
     'genres': Genres,
-    'years': Years
+    'years': Years,
+    'ratings': Ratings,
   },
 }

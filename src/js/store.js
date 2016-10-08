@@ -8,9 +8,14 @@ const store = new Vuex.Store({
     active: {
       genres: [],
       years: [],
+      ratings: [],
     },
     genres: null,
     posterBase: null,
+    ratings: [
+      {id: 'lesserKnown', name: 'Include lesser known movies'},
+      {id: 'bad', name: 'Include bad movies'},
+    ],
     urlBase: null,
     years: [
       {id: 1940, name: 'ʼ40s (1940 - 1949)'},
