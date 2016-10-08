@@ -1,4 +1,5 @@
 import Filter from './Filter.js';
+import Notice from './Notice.js';
 import Recommend from './Recommend.js';
 
 export default {
@@ -10,10 +11,13 @@ export default {
         <movie-filter title="Ratings" type="ratings"></movie-filter>
         <recommend></recommend>
       </div>
+
+      <notice></notice>
     </div>
   `,
   components: {
     'movie-filter': Filter,
+    'notice': Notice,
     'recommend': Recommend,
   },
 }
