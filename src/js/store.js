@@ -38,6 +38,9 @@ const store = new Vuex.Store({
     ],
   },
   mutations: {
+    open(state, type) {
+      state.active.open[type] = true;
+    },
     removeResult: state => {
       state.result = false;
 

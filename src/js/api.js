@@ -45,5 +45,7 @@ export default {
   page: page => {
     return buildQuery('discover/movie') + addParameters(page);
   },
-  recommend: buildQuery('discover/movie') + addParameters(),
+  recommend: () => {
+    return buildQuery('discover/movie') + addParameters();
+  },
 }

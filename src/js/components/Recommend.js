@@ -11,7 +11,7 @@ export default {
     recommend: () => {
       store.commit('removeResult');
 
-      http(api.recommend).subscribe({
+      http(api.recommend()).subscribe({
         next: response => {
           http(api.page(randomize(response.total_pages))).subscribe({
             next: response => {
