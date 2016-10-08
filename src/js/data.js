@@ -13,8 +13,15 @@ function createRating(rating) {
   return Math.round(rating);
 }
 
+function setGenres(genres) {
+  return store.state.genres.filter(genre => {
+    return genres.indexOf(genre.id) !== -1;
+  });
+}
+
 export default {
   convert: result => {
+    result.genres = setGenres(result.genre_ids);
     result.poster = store.state.urlBase + store.state.posterBase + result.backdrop_path;
     result.rating = createRating(result.vote_average);
     result.year = result.release_date.slice(0, 4);

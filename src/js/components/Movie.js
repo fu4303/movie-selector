@@ -12,18 +12,21 @@ export default {
       <div id="meta">
         <div class="meta-item rating">Rating: <span>{{ result.rating }}</span></div>
 
-        <a class="meta-item" v-for="genre in genres">{{ genre.name }}</a>
+        <a class="meta-item" v-for="genre in result.genres" v-on:click="toggleActive(genre.id)">{{ genre.name }}</a>
       </div>
     </div>
   `,
-  data: () => {
-    return {
-      genres: store.state.active.genres,
-    }
-  },
   computed: {
     result: () => {
       return store.state.result;
     }
+  },
+  methods: {
+    toggleActive: id => {
+      store.commit('toggleActive', {
+        type: 'genres',
+        id: id
+      });
+    },
   },
 }
