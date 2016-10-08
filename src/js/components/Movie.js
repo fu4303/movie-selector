@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     toggleActive: id => {
+      store.commit('toggleOpen', 'genres');
       store.commit('toggleActive', {
         type: 'genres',
         id: id

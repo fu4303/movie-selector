@@ -3,10 +3,10 @@ import store from '../store.js';
 export default {
   template: `
     <div class="component">
-      <h3>{{ title }}<span v-on:click="active = !active" v-bind:class="{'active': active}">{{ setText() }}</span></h3>
+      <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{'open': open}">{{ setText() }}</span></h3>
 
       <transition name="slide">
-        <ol v-show="active">
+        <ol v-show="open">
           <li v-for="option in options" v-on:click="toggleActive(option.id)">
             <div class="check">
               <transition name="appear">
@@ -23,16 +23,23 @@ export default {
   props: ['title', 'type'],
   data: function() {
     return {
-      active: false,
       options: store.state[this.type],
     };
+  },
+  computed: {
+    open: function() {
+      return store.state.active.open[this.type];
+    },
   },
   methods: {
     isActive: function(id) {
       return store.state.active[this.type].indexOf(id) !== -1;
     },
+    toggleOpen: function() {
+      store.commit('toggleOpen', this.type);
+    },
     setText: function()  {
-      if (this.active) {
+      if (this.open) {
         return 'Hide options';
       } else {
         return 'Show options';

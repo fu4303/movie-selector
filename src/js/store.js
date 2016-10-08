@@ -11,6 +11,11 @@ const store = new Vuex.Store({
       genres: [],
       years: [],
       ratings: [],
+      open: {
+        genres: false,
+        years: false,
+        ratings: false,
+      },
     },
     animate: false,
     genres: null,
@@ -48,6 +53,9 @@ const store = new Vuex.Store({
       } else {
         state.active[payload.type].splice(index, 1);
       }
+    },
+    toggleOpen(state, type) {
+      state.active.open[type] = !state.active.open[type];
     },
     setData: state => {
       state.genres = JSON.parse(localStorage.getItem('genres'));
