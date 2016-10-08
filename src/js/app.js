@@ -2,6 +2,8 @@
 
 import '../scss/app.scss';
 
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
 import Vue from 'vue';
 
 import Filter from './components/Filter.js';
@@ -25,10 +27,11 @@ new Vue({
   },
   created: function() {
     const date = Math.round(Date.now() / 1000);
-    store.commit('setImageBase');
 
-    if (store.state.posterBase && store.state.urlBase && localStorage.getItem('timestamp')) {
+    if (localStorage.getItem('timestamp')) {
       const weekInSeconds = 604800;
+
+      store.commit('setData');
 
       if (date < (parseInt(localStorage.getItem('timestamp')) + weekInSeconds)) {
         this.ready = true;
@@ -37,14 +40,16 @@ new Vue({
       }
     }
 
-    http(api.images).subscribe({
-      next: (response) => {
-        localStorage.setItem('posterBase', response.images.poster_sizes[4]);
+    Observable.combineLatest(http(api.genres), http(api.images), (genres, images) => {
+      return {genres: genres, images: images};
+    }).subscribe({
+      next: (res) => {
+        localStorage.setItem('genres', JSON.stringify(res.genres.genres));
+        localStorage.setItem('posterBase', res.images.images.poster_sizes[4]);
+        localStorage.setItem('urlBase', res.images.images.base_url);
         localStorage.setItem('timestamp', date);
-        localStorage.setItem('urlBase', response.images.base_url);
 
-        store.commit('setImageBase');
-
+        store.commit('setData');
         this.ready = true;
       }
     });

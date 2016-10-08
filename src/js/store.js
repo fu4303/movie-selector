@@ -9,7 +9,8 @@ const store = new Vuex.Store({
     urlBase: null
   },
   mutations: {
-    setImageBase: (state) => {
+    setData: (state) => {
+      state.genres = JSON.parse(localStorage.getItem('genres'));
       state.posterBase = localStorage.getItem('posterBase');
       state.urlBase = localStorage.getItem('urlBase');
     }
