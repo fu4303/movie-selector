@@ -19,12 +19,19 @@ function setGenres(genres) {
   });
 }
 
+function setTrailer(result) {
+  const title = result.title.replace(/\s/g, '+').toLowerCase();
+
+  return 'https://www.youtube.com/results?search_query=' + title + '+' + result.year + '+trailer+hd';
+}
+
 export default {
   convert: result => {
     result.genres = setGenres(result.genre_ids);
     result.poster = store.state.urlBase + store.state.posterBase + result.backdrop_path;
     result.rating = createRating(result.vote_average);
     result.year = result.release_date.slice(0, 4);
+    result.trailer = setTrailer(result);
 
     return result;
   },

@@ -17,6 +17,8 @@ export default {
 
       <p v-if="result.overview">{{ result.overview }}</p>
       <p v-else>No description available.</p>
+
+      <a v-bind:href="result.trailer" class="button" target="_blank" tabindex="2">Search for trailers</a>
     </div>
   `,
   computed: {
