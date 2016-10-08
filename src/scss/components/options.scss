@@ -34,12 +34,12 @@
     width: 100%;
   }
 
-  .slide-enter {
+  .slide-enter-active {
     -webkit-animation: slide-enter $animation ease-out;
     animation: slide-enter $animation ease-out;
   }
 
-  .slide-leave {
+  .slide-leave-active {
     -webkit-animation: slide-leave $animation ease-out;
     animation: slide-leave $animation ease-out;
   }
