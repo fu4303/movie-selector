@@ -42,12 +42,12 @@
     }
   }
 
-  .appear-enter {
+  .appear-enter-active {
     -webkit-animation: appear-enter ($animation / 2) ease-out;
     animation: appear-enter ($animation / 2) ease-out;
   }
 
-  .appear-leave {
+  .appear-leave-active {
     -webkit-animation: appear-leave ($animation / 2) ease-out;
     animation: appear-leave ($animation / 2) ease-out;
   }
