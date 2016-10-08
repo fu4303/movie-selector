@@ -15,7 +15,7 @@ function addParameters(page) {
   }
 
   if (store.state.active.years.length) {
-    const year = store.state.active.years.shift();
+    const year = store.state.active.years[0];
 
     params += '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';
   }
