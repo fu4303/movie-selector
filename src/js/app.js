@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import Vue from 'vue';
 
-import Filter from './components/Filter.js';
+import Filters from './components/Filters.js';
 import Loading from './components/Loading.js';
 import Result from './components/Result.js';
 
@@ -18,7 +18,7 @@ import store from './store.js';
 new Vue({
   el: '#app',
   components: {
-    'movie-filter': Filter,
+    'movie-filters': Filters,
     'loading': Loading,
     'result': Result
   },
