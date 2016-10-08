@@ -3,7 +3,7 @@ import store from '../../store.js';
 export default {
   template: `
     <div class="component">
-      <h3>Genres<span v-on:click="toggleShow()" v-bind:class="{'active': active}">{{ setText() }}</span></h3>
+      <h3>Genres<span v-on:click="active = !active" v-bind:class="{'active': active}">{{ setText() }}</span></h3>
 
       <transition name="slide">
         <ol v-show="active">
@@ -42,9 +42,6 @@ export default {
         type: 'genres',
         id: id
       });
-    },
-    toggleShow: function() {
-      this.active = !this.active;
     }
   }
 }
