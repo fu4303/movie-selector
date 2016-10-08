@@ -1,9 +1,7 @@
 import store from './store.js';
 
 function createRating(rating) {
-  let decimal = rating.toFixed(2);
-
-  decimal = decimal.split('.');
+  let decimal = rating.toFixed(2).split('.');
   decimal = parseInt(decimal[1]);
 
   if (decimal >= 25 && decimal < 75) {
