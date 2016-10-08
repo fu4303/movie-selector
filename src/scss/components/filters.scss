@@ -1,0 +1,15 @@
+#filters {
+  -webkit-animation: appear-enter $animation ease-out;
+  animation: appear-enter $animation ease-out;
+  margin-bottom: $margin-bottom;
+  position: absolute;
+  right: 0;
+  width: 380px;
+
+  .button {
+    @include box-shadow();
+    float: left;
+    margin-top: 40px;
+    width: 100%;
+  }
+}
