@@ -16,6 +16,7 @@ const store = new Vuex.Store({
       {id: 'lesserKnown', name: 'Include lesser known movies'},
       {id: 'bad', name: 'Include bad movies'},
     ],
+    result: false,
     urlBase: null,
     years: [
       {id: 1940, name: 'ʼ40s (1940 - 1949)'},
@@ -43,6 +44,9 @@ const store = new Vuex.Store({
       state.posterBase = localStorage.getItem('posterBase');
       state.urlBase = localStorage.getItem('urlBase');
     },
+    setResult: (state, result) => {
+      state.result = result;
+    }
   }
 });
 

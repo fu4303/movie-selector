@@ -1,6 +1,7 @@
 import api from '../api.js';
 import http from '../http.js';
 import randomize from '../randomize.js';
+import store from '../store.js';
 
 export default {
   template: `
@@ -9,7 +10,13 @@ export default {
   methods: {
     recommend: () => {
       http(api.recommend).subscribe({
-        next: response => {}
+        next: response => {
+          http(api.page(randomize(response.total_pages))).subscribe({
+            next: response => {
+              store.commit('setResult', response.results[randomize(response.results.length - 1, true)]);
+            }
+          });
+        }
       });
     },
   }
