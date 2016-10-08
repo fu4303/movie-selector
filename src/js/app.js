@@ -25,8 +25,8 @@ new Vue({
   data: {
     ready: false
   },
-  methods: {
-    animate: () => {
+  computed: {
+    animate: function() {
       return store.state.animate;
     }
   },
