@@ -9,7 +9,7 @@ export default {
   components: {
     'poster': Poster
   },
-  data: function() {
+  data: () => {
     return {
       result: false
     };
