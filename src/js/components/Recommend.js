@@ -1,4 +1,6 @@
 import api from '../api.js';
+import http from '../http.js';
+import randomize from '../randomize.js';
 
 export default {
   template: `
