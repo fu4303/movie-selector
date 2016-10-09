@@ -38,7 +38,10 @@ const store = new Vuex.Store({
     ],
   },
   mutations: {
-    open(state, type) {
+    clear: (state, type) => {
+      state.active[type] = [];
+    },
+    open: (state, type) => {
       state.active.open[type] = true;
     },
     removeMovie: state => {
@@ -57,7 +60,7 @@ const store = new Vuex.Store({
         state.active[payload.type].splice(index, 1);
       }
     },
-    toggleOpen(state, type) {
+    toggleOpen: (state, type) => {
       state.active.open[type] = !state.active.open[type];
     },
     setData: state => {

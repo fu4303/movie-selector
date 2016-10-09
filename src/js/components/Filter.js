@@ -1,3 +1,4 @@
+import data from '../data.js';
 import store from '../store.js';
 
 export default {
@@ -46,10 +47,7 @@ export default {
       }
     },
     toggleActive: function(id) {
-      store.commit('toggleActive', {
-        type: this.type,
-        id: id
-      });
+      data.toggleActive(this.type, id);
     },
   },
 }
