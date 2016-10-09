@@ -17,7 +17,7 @@ export default {
         next: response => {
           http(api.page(randomize(response.total_pages))).subscribe({
             next: response => {
-              store.commit('setResult', response.results[randomize(response.results.length - 1, true)]);
+              store.commit('setResult', response.results[randomize(response.results.length, true)]);
             }
           });
         }

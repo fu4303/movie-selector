@@ -11,9 +11,12 @@ import Loading from './components/Loading.js';
 import Movie from './components/Movie.js';
 
 import api from './api.js';
-import http from './http.js';
 import data from './data.js';
+import http from './http.js';
+import Orbs from './Orbs.js';
 import store from './store.js';
+
+new Orbs();
 
 new Vue({
   el: '#app',

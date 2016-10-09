@@ -1,7 +1,9 @@
 export default (maximum, zeroIndexed) => {
+  const random = Math.ceil(Math.random() * maximum);
+
   if (!zeroIndexed) {
-    return Math.ceil(Math.random() * maximum);
+    return random;
   }
 
-  return Math.ceil(Math.random() * (maximum + 1)) - 1;
+  return random - 1;
 }
