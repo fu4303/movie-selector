@@ -57,5 +57,5 @@ new Vue({
         this.ready = true;
       }
     });
-  }
+  },
 });

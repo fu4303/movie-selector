@@ -43,5 +43,5 @@ export default {
     localStorage.setItem('timestamp', date);
 
     store.commit('setData');
-  }
+  },
 }

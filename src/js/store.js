@@ -67,8 +67,8 @@ const store = new Vuex.Store({
     },
     setMovie: (state, movie) => {
       state.movie = data.convert(movie);
-    }
-  }
+    },
+  },
 });
 
 export default store;
