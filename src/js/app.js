@@ -29,7 +29,7 @@ new Vue({
     ready: false
   },
   computed: {
-    animate: function() {
+    animate: () => {
       return store.state.animate;
     }
   },
