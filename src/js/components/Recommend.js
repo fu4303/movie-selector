@@ -1,6 +1,6 @@
 import api from '../api.js';
-import http from '../http.js';
-import randomize from '../randomize.js';
+import http from '../common/http.js';
+import randomize from '../common/randomize.js';
 import store from '../store.js';
 
 export default {

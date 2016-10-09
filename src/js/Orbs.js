@@ -1,4 +1,4 @@
-import randomize from './randomize.js';
+import randomize from './common/randomize.js';
 
 export default class {
   constructor() {

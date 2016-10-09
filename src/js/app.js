@@ -12,7 +12,7 @@ import Movie from './components/Movie.js';
 
 import api from './api.js';
 import data from './data.js';
-import http from './http.js';
+import http from './common/http.js';
 import Orbs from './Orbs.js';
 import store from './store.js';
 
