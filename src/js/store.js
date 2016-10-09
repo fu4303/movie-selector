@@ -24,7 +24,7 @@ const store = new Vuex.Store({
       {id: 'lesserKnown', name: 'Include lesser known movies'},
       {id: 'bad', name: 'Include bad movies'},
     ],
-    result: false,
+    movie: false,
     urlBase: null,
     years: [
       {id: 1940, name: 'ʼ40s (1940 - 1949)'},
@@ -41,8 +41,8 @@ const store = new Vuex.Store({
     open(state, type) {
       state.active.open[type] = true;
     },
-    removeResult: state => {
-      state.result = false;
+    removeMovie: state => {
+      state.movie = false;
 
       if (!state.animate) {
         state.animate = true;
@@ -65,8 +65,8 @@ const store = new Vuex.Store({
       state.posterBase = localStorage.getItem('posterBase');
       state.urlBase = localStorage.getItem('urlBase');
     },
-    setResult: (state, result) => {
-      state.result = data.convert(result);
+    setMovie: (state, movie) => {
+      state.movie = data.convert(movie);
     }
   }
 });

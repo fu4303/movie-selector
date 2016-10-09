@@ -17,21 +17,21 @@ function setGenres(genres) {
   });
 }
 
-function setTrailer(result) {
-  const title = result.title.replace(/\s/g, '+').toLowerCase();
+function setTrailer(movie) {
+  const title = movie.title.replace(/\s/g, '+').toLowerCase();
 
-  return 'https://www.youtube.com/results?search_query=' + title + '+' + result.year + '+trailer+hd';
+  return 'https://www.youtube.com/results?search_query=' + title + '+' + movie.year + '+trailer+hd';
 }
 
 export default {
-  convert: result => {
-    result.genres = setGenres(result.genre_ids);
-    result.poster = store.state.urlBase + store.state.posterBase + result.backdrop_path;
-    result.rating = createRating(result.vote_average);
-    result.year = result.release_date.slice(0, 4);
-    result.trailer = setTrailer(result);
+  convert: movie => {
+    movie.genres = setGenres(movie.genre_ids);
+    movie.poster = store.state.urlBase + store.state.posterBase + movie.backdrop_path;
+    movie.rating = createRating(movie.vote_average);
+    movie.year = movie.release_date.slice(0, 4);
+    movie.trailer = setTrailer(movie);
 
-    return result;
+    return movie;
   },
   set: (data, date) => {
     localStorage.setItem('genres', JSON.stringify(data.genres.genres.filter(genre => {

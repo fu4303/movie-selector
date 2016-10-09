@@ -9,7 +9,7 @@ export default {
   `,
   methods: {
     recommend: () => {
-      store.commit('removeResult');
+      store.commit('removeMovie');
 
       scrollTo(0, 0);
 
@@ -17,7 +17,7 @@ export default {
         next: response => {
           http(api.page(randomize(response.total_pages))).subscribe({
             next: response => {
-              store.commit('setResult', response.results[randomize(response.results.length, true)]);
+              store.commit('setMovie', response.results[randomize(response.results.length, true)]);
             }
           });
         }

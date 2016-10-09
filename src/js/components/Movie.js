@@ -2,28 +2,28 @@ import store from '../store.js';
 
 export default {
   template: `
-    <div v-if="result" id="movie">
+    <div v-if="movie" id="movie">
       <div class="poster">
-        <img v-bind:src="result.poster">
+        <img v-bind:src="movie.poster">
 
-        <h2>{{ result.title }} <span>&nbsp;&bull;&nbsp; {{ result.year }}</span></h2>
+        <h2>{{ movie.title }} <span>&nbsp;&bull;&nbsp; {{ movie.year }}</span></h2>
       </div>
 
       <div id="meta">
-        <div class="meta-item rating">Rating: <span>{{ result.rating }}</span></div>
+        <div class="meta-item rating">Rating: <span>{{ movie.rating }}</span></div>
 
-        <a class="meta-item" v-for="genre in result.genres" v-bind:class="{'active': isActive(genre.id)}" v-on:click="toggleActive(genre.id)">{{ genre.name }}</a>
+        <a class="meta-item" v-for="genre in movie.genres" v-bind:class="{'active': isActive(genre.id)}" v-on:click="toggleActive(genre.id)">{{ genre.name }}</a>
       </div>
 
-      <p v-if="result.overview">{{ result.overview }}</p>
+      <p v-if="movie.overview">{{ movie.overview }}</p>
       <p v-else>No description available.</p>
 
-      <a v-bind:href="result.trailer" class="button" target="_blank" tabindex="2">Search for trailers</a>
+      <a v-bind:href="movie.trailer" class="button" target="_blank" tabindex="2">Search for trailers</a>
     </div>
   `,
   computed: {
-    result: () => {
-      return store.state.result;
+    movie: () => {
+      return store.state.movie;
     }
   },
   methods: {
