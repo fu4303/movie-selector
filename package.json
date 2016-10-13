@@ -7,14 +7,11 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-loader": "^0.4.4",
     "node-sass": "^3.10.1",
-    "rxjs": "^5.0.0-beta.12",
+    "rxjs": "^5.0.0-rc.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
-    "vue": "^2.0.1",
+    "vue": "^2.0.3",
     "vuex": "^2.0.0",
     "webpack": "^1.13.2"
-  },
-  "scripts": {
-    "postinstall": "webpack --watch"
   }
 }
