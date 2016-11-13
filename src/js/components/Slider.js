@@ -79,6 +79,8 @@ export default {
         next: event => {
           for (const element in this.$refs) {
             if (event.target === this.$refs[element]) {
+              document.documentElement.classList.add('drag');
+
               this.current = element;
               this.active[this.current] = true;
 
@@ -91,6 +93,12 @@ export default {
     observeUp: function() {
       Observable.fromEvent(document, 'mouseup').subscribe({
         next: () => {
+          if (! this.current) {
+            return;
+          }
+
+          document.documentElement.classList.remove('drag');
+
           store.commit('setSliderValue', {
             type: this.type,
             value: this[this.current],

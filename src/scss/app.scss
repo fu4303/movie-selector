@@ -20,6 +20,14 @@
   box-sizing: border-box;
 }
 
+html.drag {
+  cursor: ew-resize;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
   background: $gray-light;
   color: $gray-dark;
