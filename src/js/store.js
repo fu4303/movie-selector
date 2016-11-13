@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-import data from './data.js';
+import data from './data.js'
 
 Vue.use(Vuex);
 
@@ -74,4 +74,4 @@ const store = new Vuex.Store({
   },
 });
 
-export default store;
+export default store

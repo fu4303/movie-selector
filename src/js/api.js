@@ -1,5 +1,5 @@
-import env from '../../.env.js';
-import store from './store.js';
+import env from '../../.env.js'
+import store from './store.js'
 
 function buildQuery(method) {
   return 'http://api.themoviedb.org/3/' + method + '?api_key=' + env.apiKey;

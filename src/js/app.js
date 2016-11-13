@@ -1,20 +1,20 @@
 'use strict';
 
-import '../scss/app.scss';
+import '../scss/app.scss'
 
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/combineLatest';
-import Vue from 'vue';
+import {Observable} from 'rxjs/Observable'
+import 'rxjs/add/observable/combineLatest'
+import Vue from 'vue'
 
-import Filters from './components/Filters.js';
-import Loading from './components/Loading.js';
-import Movie from './components/Movie.js';
+import Filters from './components/Filters.js'
+import Loading from './components/Loading.js'
+import Movie from './components/Movie.js'
 
-import api from './api.js';
-import data from './data.js';
-import http from './common/http.js';
-import Orbs from './Orbs.js';
-import store from './store.js';
+import api from './api.js'
+import data from './data.js'
+import http from './common/http.js'
+import Orbs from './Orbs.js'
+import store from './store.js'
 
 new Orbs();
 

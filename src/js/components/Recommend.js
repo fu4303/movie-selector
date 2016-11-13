@@ -1,7 +1,7 @@
-import api from '../api.js';
-import http from '../common/http.js';
-import randomize from '../common/randomize.js';
-import store from '../store.js';
+import api from '../api.js'
+import http from '../common/http.js'
+import randomize from '../common/randomize.js'
+import store from '../store.js'
 
 export default {
   template: `

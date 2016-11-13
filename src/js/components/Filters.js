@@ -1,6 +1,6 @@
-import Filter from './Filter.js';
-import Notice from './Notice.js';
-import Recommend from './Recommend.js';
+import Filter from './Filter.js'
+import Notice from './Notice.js'
+import Recommend from './Recommend.js'
 
 export default {
   template: `

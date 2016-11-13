@@ -1,4 +1,4 @@
-import store from './store.js';
+import store from './store.js'
 
 function createRating(rating) {
   let decimal = rating.toFixed(2).split('.');
