@@ -6,18 +6,15 @@ function buildQuery(method) {
 }
 
 function addParameters(page) {
+  const years = store.state.active.years;
   let minAverage = 5.0;
   let minVotes = 50;
   let params = '';
 
+  params += '&primary_release_date.gte=' + years.min + '-01-01&primary_release_date.lte=' + years.max + '-12-31';
+
   if (store.state.active.genres.length) {
     params += '&with_genres=' + store.state.active.genres.join('|');
-  }
-
-  if (store.state.active.years.length) {
-    const year = store.state.active.years[0];
-
-    params += '&primary_release_date.gte=' + year + '-01-01&primary_release_date.lte=' + (year + 9) + '-12-31';
   }
 
   if (store.state.active.ratings.indexOf('lesserKnown') !== -1) {
