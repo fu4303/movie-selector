@@ -10,8 +10,8 @@ const store = new Vuex.Store({
     active: {
       genres: [],
       years: {
-        max: 0,
-        min: 0,
+        max: 2016,
+        min: 1940,
       },
       ratings: [],
       open: {
@@ -29,10 +29,6 @@ const store = new Vuex.Store({
     ],
     movie: false,
     urlBase: null,
-    years: {
-      max: 2016,
-      min: 1940,
-    },
   },
   mutations: {
     clear: (state, type) => {

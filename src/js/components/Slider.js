@@ -27,20 +27,19 @@ export default {
   props: ['title', 'type'],
   data: function() {
     return {
-      options: store.state[this.type],
       active: {
         max: false,
         min: false,
       },
       current: undefined,
       initial: false,
-      max: store.state[this.type].max,
-      min: store.state[this.type].min,
+      max: store.state.active[this.type].max,
+      min: store.state.active[this.type].min,
       position: {
         max: 100,
         min: 0,
       },
-      range: store.state[this.type].max - store.state[this.type].min,
+      range: store.state.active[this.type].max - store.state.active[this.type].min,
       width: undefined,
     };
   },
