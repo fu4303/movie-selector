@@ -143,6 +143,12 @@ export default {
       const difference = Math.round((event.clientX - this.previous.clientX) * factor);
       let newValue = this.previous.value + difference;
 
+      if (this.current === 'max' && newValue <= this.min) {
+        newValue = this.min;
+      } else if (this.current === 'min' && newValue >= this.max) {
+        newValue = this.max;
+      }
+
       if (newValue <= this.initial.min) {
         newValue = this.initial.min;
       } else if (newValue >= this.initial.max) {
