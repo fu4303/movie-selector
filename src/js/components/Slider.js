@@ -36,6 +36,34 @@ export default {
       }
     };
   },
+  mounted: function() {
+    let active = false;
+    const down = Observable.fromEvent(document, 'mousedown');
+    const move = Observable.fromEvent(document, 'mousemove');
+    const up = Observable.fromEvent(document, 'mouseup');
+
+    down.subscribe({
+      next: event => {
+        for (const element in this.$refs) {
+          if (event.target === this.$refs[element]) {
+            active = this.$refs[element];
+
+            break;
+          }
+        }
+      },
+    });
+
+    up.subscribe({
+      next: () => {
+        active = false;
+      },
+    });
+
+    move.subscribe({
+      next: event => {},
+    });
+  },
   computed: {
     open: function() {
       return true;
