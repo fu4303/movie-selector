@@ -25,14 +25,8 @@ export default {
     return {
       options: store.state[this.type],
       slider: {
-        max: {
-          current: store.state[this.type].max,
-          init: store.state[this.type].max,
-        },
-        min: {
-          current: store.state[this.type].min,
-          init: store.state[this.type].min,
-        },
+        max: store.state[this.type].max,
+        min: store.state[this.type].min,
       }
     };
   },
@@ -70,10 +64,10 @@ export default {
       // return store.state.active.open[this.type];
     },
     position: function() {
-      const factor = 100 / (this.slider.max.init - this.slider.min.init);
+      const factor = 100 / (store.state[this.type].max - store.state[this.type].min);
       const percentages = {
-        max: (this.slider.max.init - this.slider.max.current) * factor,
-        min: (this.slider.min.current - this.slider.min.init) * factor,
+        max: (store.state[this.type].max - this.slider.max) * factor,
+        min: (this.slider.min - store.state[this.type].min) * factor,
       };
       const max = 100 - (Math.round(percentages.max * 100) / 100);
       const min = Math.round(percentages.min * 100) / 100;
