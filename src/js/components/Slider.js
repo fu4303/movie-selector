@@ -7,7 +7,12 @@ export default {
       <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{'open': open}">{{ setText() }}</span></h3>
 
       <transition name="slide">
-        <div v-show="open"></div>
+        <div v-show="open">
+          <div class="slider">
+            <div class="handle handle-min"></div>
+            <div class="handle handle-max"></div>
+          </div>
+        </div>
       </transition>
     </div>
   `,

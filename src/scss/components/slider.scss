@@ -1,0 +1,29 @@
+.slider {
+  $height: 6px;
+
+  background: $gray-slider;
+  border-radius: 5px;
+  height: $height;
+  margin: 25px 0 10px;
+  position: relative;
+  width: 100%;
+
+  .handle {
+    $dimension: 16px;
+
+    background: $blue;
+    border-radius: 100%;
+    height: $dimension;
+    position: absolute;
+    top: -(($dimension - $height) / 2);
+    width: $dimension;
+
+    &-min {
+      left: 0;
+    }
+
+    &-max {
+      right: 0;
+    }
+  }
+}
