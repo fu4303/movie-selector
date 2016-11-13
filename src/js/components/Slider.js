@@ -44,10 +44,10 @@ export default {
       width: undefined,
     };
   },
-  mounted: function() {
+  created: function() {
     this.observeDown();
-    this.observeUp();
     this.observeMove();
+    this.observeUp();
   },
   computed: {
     open: function() {
@@ -88,6 +88,12 @@ export default {
     observeUp: function() {
       Observable.fromEvent(document, 'mouseup').subscribe({
         next: () => {
+          store.commit('setSliderValue', {
+            type: this.type,
+            value: this[this.current],
+            bound: this.current,
+          });
+
           this.active[this.current] = false;
           this.current = false;
           this.initial = false;
@@ -102,7 +108,6 @@ export default {
           }
 
           this.getWidth();
-
           const factor = this.range / this.width;
 
           if (! this.initial) {

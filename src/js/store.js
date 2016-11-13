@@ -68,6 +68,9 @@ const store = new Vuex.Store({
     setMovie: (state, movie) => {
       state.movie = data.convert(movie);
     },
+    setSliderValue: (state, payload) => {
+      state.active[payload.type][payload.bound] = payload.value;
+    },
   },
 });
 
