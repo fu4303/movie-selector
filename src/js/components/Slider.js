@@ -33,6 +33,7 @@ export default {
         min: false,
       },
       current: undefined,
+      initial: false,
       max: store.state[this.type].max,
       min: store.state[this.type].min,
       position: {
@@ -44,57 +45,9 @@ export default {
     };
   },
   mounted: function() {
-    const down = Observable.fromEvent(document, 'mousedown');
-    const move = Observable.fromEvent(document, 'mousemove');
-    const up = Observable.fromEvent(document, 'mouseup');
-    let initial = false;
-
-    down.subscribe({
-      next: event => {
-        for (const element in this.$refs) {
-          if (event.target === this.$refs[element]) {
-            this.current = element;
-            this.active[this.current] = true;
-
-            break;
-          }
-        }
-      },
-    });
-
-    up.subscribe({
-      next: () => {
-        this.active[this.current] = false;
-        this.current = false;
-        initial = false;
-      },
-    });
-
-    move.subscribe({
-      next: event => {
-        if (! this.current) {
-          return;
-        }
-
-        this.getWidth();
-
-        const factor = this.range / this.width;
-
-        if (! initial) {
-          initial = {
-            clientX: event.clientX,
-            position: this.position[this.current],
-            value: this[this.current],
-          }
-        }
-
-        const position = (event.clientX - initial.clientX) * (100 / this.width);
-        this.position[this.current] = initial.position + Math.round(position * 100) / 100;
-
-        const difference = Math.round((event.clientX - initial.clientX) * factor);
-        this[this.current] = initial.value + difference;
-      },
-    });
+    this.observeDown();
+    this.observeUp();
+    this.observeMove();
   },
   computed: {
     open: function() {
@@ -118,8 +71,55 @@ export default {
     isActive: function(id) {
       return store.state.active[this.type].indexOf(id) !== -1;
     },
-    toggleOpen: function() {
-      store.commit('toggleOpen', this.type);
+    observeDown: function() {
+      Observable.fromEvent(document, 'mousedown').subscribe({
+        next: event => {
+          for (const element in this.$refs) {
+            if (event.target === this.$refs[element]) {
+              this.current = element;
+              this.active[this.current] = true;
+
+              break;
+            }
+          }
+        },
+      });
+    },
+    observeUp: function() {
+      Observable.fromEvent(document, 'mouseup').subscribe({
+        next: () => {
+          this.active[this.current] = false;
+          this.current = false;
+          this.initial = false;
+        },
+      });
+    },
+    observeMove: function() {
+      Observable.fromEvent(document, 'mousemove').subscribe({
+        next: event => {
+          if (! this.current) {
+            return;
+          }
+
+          this.getWidth();
+
+          const factor = this.range / this.width;
+
+          if (! this.initial) {
+            this.initial = {
+              clientX: event.clientX,
+              position: this.position[this.current],
+              value: this[this.current],
+            }
+          }
+
+          const position = (event.clientX - this.initial.clientX) * (100 / this.width);
+          this.position[this.current] = this.initial.position + Math.round(position * 100) / 100;
+
+          const difference = Math.round((event.clientX - this.initial.clientX) * factor);
+          this[this.current] = this.initial.value + difference;
+        },
+      });
     },
     setText: function()  {
       if (this.open) {
@@ -130,6 +130,9 @@ export default {
     },
     toggleActive: function(id) {
       data.toggleActive(this.type, id);
+    },
+    toggleOpen: function() {
+      store.commit('toggleOpen', this.type);
     },
   },
 }
