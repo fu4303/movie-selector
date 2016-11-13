@@ -7,7 +7,7 @@
   top: 22.5%;
   -webkit-transition: top $animation ease-out, width $animation ease-out;
   transition: top $animation ease-out, width $animation ease-out;
-  width: 380px;
+  width: $filter-width;
 
   &.ready {
     display: block;

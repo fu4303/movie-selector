@@ -6,17 +6,26 @@
 @import 'components/button';
 @import 'components/check';
 @import 'components/contact';
-@import 'components/notice';
+@import 'components/filters';
 @import 'components/loading';
 @import 'components/logo';
 @import 'components/meta';
 @import 'components/movie';
+@import 'components/notice';
 @import 'components/options';
 @import 'components/orb';
-@import 'components/filters';
+@import 'components/slider';
 
 * {
   box-sizing: border-box;
+}
+
+html.drag {
+  cursor: ew-resize;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {

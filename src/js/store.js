@@ -5,11 +5,16 @@ import data from './data.js'
 
 Vue.use(Vuex);
 
+const now = new Date();
+const year = now.getFullYear();
 const store = new Vuex.Store({
   state: {
     active: {
       genres: [],
-      years: [],
+      years: {
+        max: year,
+        min: 1940,
+      },
       ratings: [],
       open: {
         genres: false,
@@ -26,16 +31,6 @@ const store = new Vuex.Store({
     ],
     movie: false,
     urlBase: null,
-    years: [
-      {id: 1940, name: 'ʼ40s (1940 - 1949)'},
-      {id: 1950, name: 'ʼ50s (1950 - 1959)'},
-      {id: 1960, name: 'ʼ60s (1960 - 1969)'},
-      {id: 1970, name: 'ʼ70s (1970 - 1979)'},
-      {id: 1980, name: 'ʼ80s (1980 - 1989)'},
-      {id: 1990, name: 'ʼ90s (1990 - 1999)'},
-      {id: 2000, name: 'ʼ00s (2000 - 2009)'},
-      {id: 2010, name: 'ʼ10s (2010 - 2019)'},
-    ],
   },
   mutations: {
     clear: (state, type) => {
@@ -70,6 +65,9 @@ const store = new Vuex.Store({
     },
     setMovie: (state, movie) => {
       state.movie = data.convert(movie);
+    },
+    setSliderValue: (state, payload) => {
+      state.active[payload.type][payload.bound] = payload.value;
     },
   },
 });

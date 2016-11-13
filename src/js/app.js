@@ -2,7 +2,7 @@
 
 import '../scss/app.scss'
 
-import {Observable} from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/combineLatest'
 import Vue from 'vue'
 
@@ -26,12 +26,12 @@ new Vue({
     'movie': Movie
   },
   data: {
-    ready: false
+    ready: false,
   },
   computed: {
     animate: () => {
       return store.state.animate;
-    }
+    },
   },
   created: function() {
     const date = Math.round(Date.now() / 1000);
@@ -55,7 +55,7 @@ new Vue({
         data.set(response, date);
 
         this.ready = true;
-      }
+      },
     });
   },
 });

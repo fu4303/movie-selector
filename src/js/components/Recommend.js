@@ -18,7 +18,7 @@ export default {
           http(api.page(randomize(response.total_pages))).subscribe({
             next: response => {
               store.commit('setMovie', response.results[randomize(response.results.length, true)]);
-            }
+            },
           });
         }
       });
