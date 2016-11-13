@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs/Observable'
-import 'rxjs/add/observable/combineLatest'
 import 'rxjs/add/observable/fromEvent'
 
 import data from '../data.js'
@@ -27,12 +26,12 @@ export default {
       options: store.state[this.type],
       slider: {
         max: {
-          current: 1990,
-          init: 2016,
+          current: store.state[this.type].max,
+          init: store.state[this.type].max,
         },
         min: {
-          current: 1946,
-          init: 1940,
+          current: store.state[this.type].min,
+          init: store.state[this.type].min,
         },
       }
     };
