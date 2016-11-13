@@ -1,16 +1,21 @@
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/observable/combineLatest'
+import 'rxjs/add/observable/fromEvent'
+
 import data from '../data.js'
 import store from '../store.js'
 
 export default {
   template: `
     <div class="component">
-      <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{'open': open}">{{ setText() }}</span></h3>
+      <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{open: open}">{{ setText() }}</span></h3>
 
       <transition name="slide">
         <div v-show="open">
           <div class="slider">
-            <div class="handle handle-min"></div>
-            <div class="handle handle-max"></div>
+            <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}"></div>
+            <div class="range" v-bind:style="{left: position.min + '%', width: position.range + '%'}"></div>
+            <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}"></div>
           </div>
         </div>
       </transition>
@@ -20,11 +25,37 @@ export default {
   data: function() {
     return {
       options: store.state[this.type],
+      slider: {
+        max: {
+          current: 1990,
+          init: 2016,
+        },
+        min: {
+          current: 1946,
+          init: 1940,
+        },
+      }
     };
   },
   computed: {
     open: function() {
-      return store.state.active.open[this.type];
+      return true;
+      // return store.state.active.open[this.type];
+    },
+    position: function() {
+      const factor = 100 / (this.slider.max.init - this.slider.min.init);
+      const percentages = {
+        max: (this.slider.max.init - this.slider.max.current) * factor,
+        min: (this.slider.min.current - this.slider.min.init) * factor,
+      };
+      const max = 100 - (Math.round(percentages.max * 100) / 100);
+      const min = Math.round(percentages.min * 100) / 100;
+
+      return {
+        max: max,
+        min: min,
+        range: max - min,
+      };
     },
   },
   methods: {

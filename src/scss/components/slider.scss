@@ -13,17 +13,17 @@
 
     background: $blue;
     border-radius: 100%;
+    cursor: ew-resize;
     height: $dimension;
+    margin-left: -($dimension / 2);
     position: absolute;
     top: -(($dimension - $height) / 2);
     width: $dimension;
+  }
 
-    &-min {
-      left: 0;
-    }
-
-    &-max {
-      right: 0;
-    }
+  .range {
+    background: $blue;
+    height: $height;
+    position: absolute;
   }
 }
