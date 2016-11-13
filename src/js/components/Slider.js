@@ -125,7 +125,12 @@ export default {
             }
           }
 
-          this.setValues(event);
+          this.getWidth();
+
+          const factor = this.range / this.width;
+          const difference = Math.round((event.clientX - this.previous.clientX) * factor);
+
+          this[this.current] = this.setValue(difference);
         },
       });
     },
@@ -136,11 +141,7 @@ export default {
         return 'Show options';
       }
     },
-    setValues: function(event) {
-      this.getWidth();
-
-      const factor = this.range / this.width;
-      const difference = Math.round((event.clientX - this.previous.clientX) * factor);
+    setValue: function(difference) {
       let newValue = this.previous.value + difference;
 
       if (this.current === 'max' && newValue <= this.min) {
@@ -155,7 +156,7 @@ export default {
         newValue = this.initial.max;
       }
 
-      this[this.current] = newValue;
+      return newValue;
     },
     toggleActive: function(id) {
       data.toggleActive(this.type, id);
