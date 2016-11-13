@@ -18,6 +18,12 @@
     position: absolute;
     top: -(($handle - $height) / 2);
     width: $handle;
+    z-index: 1;
+
+    &.active {
+      -webkit-transform: scale(1.25);
+      transform: scale(1.25);
+    }
   }
 
   .range {

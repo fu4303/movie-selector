@@ -11,9 +11,9 @@ export default {
 
       <transition name="slide">
         <div v-show="open" class="slider">
-          <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}"></div>
+          <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}" v-bind:class="{active: slider.active.min}"></div>
           <div class="range" v-bind:style="{left: position.min + '%', width: position.range + '%'}"></div>
-          <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}"></div>
+          <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}" v-bind:class="{active: slider.active.max}"></div>
         </div>
       </transition>
     </div>
@@ -23,13 +23,18 @@ export default {
     return {
       options: store.state[this.type],
       slider: {
+        active: {
+          max: false,
+          min: false,
+        },
         max: store.state[this.type].max,
         min: store.state[this.type].min,
+        range: store.state[this.type].max - store.state[this.type].min,
       }
     };
   },
   mounted: function() {
-    let active = false;
+    let current = false;
     const down = Observable.fromEvent(document, 'mousedown');
     const move = Observable.fromEvent(document, 'mousemove');
     const up = Observable.fromEvent(document, 'mouseup');
@@ -38,7 +43,8 @@ export default {
       next: event => {
         for (const element in this.$refs) {
           if (event.target === this.$refs[element]) {
-            active = this.$refs[element];
+            current = element;
+            this.slider.active[current] = true;
 
             break;
           }
@@ -48,7 +54,7 @@ export default {
 
     up.subscribe({
       next: () => {
-        active = false;
+        this.slider.active[current] = false;
       },
     });
 
@@ -61,7 +67,7 @@ export default {
       return store.state.active.open[this.type];
     },
     position: function() {
-      const factor = 100 / (store.state[this.type].max - store.state[this.type].min);
+      const factor = 100 / this.slider.range;
       const percentages = {
         max: (store.state[this.type].max - this.slider.max) * factor,
         min: (this.slider.min - store.state[this.type].min) * factor,
