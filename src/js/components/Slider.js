@@ -32,13 +32,10 @@ export default {
         min: false,
       },
       current: undefined,
-      initial: false,
+      initialMax: store.state.active[this.type].max,
+      previous: false,
       max: store.state.active[this.type].max,
       min: store.state.active[this.type].min,
-      position: {
-        max: 100,
-        min: 0,
-      },
       range: store.state.active[this.type].max - store.state.active[this.type].min,
       width: undefined,
     };
@@ -53,10 +50,14 @@ export default {
       return store.state.active.open[this.type];
     },
     getPosition: function() {
+      const factor = 100 / this.range;
+      const max = (this.range - (this.initialMax - this.max)) * factor;
+      const min = (this.range - (this.initialMax - this.min)) * factor;
+
       return {
-        max: this.position.max,
-        min: this.position.min,
-        range: this.position.max - this.position.min,
+        max: max,
+        min: min,
+        range: max - min,
       };
     },
   },
@@ -95,7 +96,7 @@ export default {
 
           this.active[this.current] = false;
           this.current = false;
-          this.initial = false;
+          this.previous = false;
         },
       });
     },
@@ -106,10 +107,9 @@ export default {
             return;
           }
 
-          if (! this.initial) {
-            this.initial = {
+          if (! this.previous) {
+            this.previous = {
               clientX: event.clientX,
-              position: this.position[this.current],
               value: this[this.current],
             }
           }
@@ -127,13 +127,11 @@ export default {
     },
     setValues: function(event) {
       this.getWidth();
+
       const factor = this.range / this.width;
+      const difference = Math.round((event.clientX - this.previous.clientX) * factor);
 
-      const position = (event.clientX - this.initial.clientX) * (100 / this.width);
-      this.position[this.current] = this.initial.position + Math.round(position * 100) / 100;
-
-      const difference = Math.round((event.clientX - this.initial.clientX) * factor);
-      this[this.current] = this.initial.value + difference;
+      this[this.current] = this.previous.value + difference;
     },
     toggleActive: function(id) {
       data.toggleActive(this.type, id);
