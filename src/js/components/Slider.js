@@ -55,8 +55,8 @@ export default {
       const min = (this.range - (this.initialMax - this.min)) * factor;
 
       return {
-        max: max,
-        min: min,
+        max: Math.round(max * 100) / 100,
+        min: Math.round(min * 100) / 100,
         range: max - min,
       };
     },
