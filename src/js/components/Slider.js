@@ -32,7 +32,10 @@ export default {
         min: false,
       },
       current: undefined,
-      initialMax: store.state.active[this.type].max,
+      initial: {
+        max: store.state.active[this.type].max,
+        min: store.state.active[this.type].min,
+      },
       previous: false,
       max: store.state.active[this.type].max,
       min: store.state.active[this.type].min,
@@ -51,8 +54,8 @@ export default {
     },
     getPosition: function() {
       const factor = 100 / this.range;
-      const max = (this.range - (this.initialMax - this.max)) * factor;
-      const min = (this.range - (this.initialMax - this.min)) * factor;
+      const max = (this.range - (this.initial.max - this.max)) * factor;
+      const min = (this.range - (this.initial.max - this.min)) * factor;
 
       return {
         max: Math.round(max * 100) / 100,
@@ -130,8 +133,15 @@ export default {
 
       const factor = this.range / this.width;
       const difference = Math.round((event.clientX - this.previous.clientX) * factor);
+      let newValue = this.previous.value + difference;
 
-      this[this.current] = this.previous.value + difference;
+      if (newValue <= this.initial.min) {
+        newValue = this.initial.min;
+      } else if (newValue >= this.initial.max) {
+        newValue = this.initial.max;
+      }
+
+      this[this.current] = newValue;
     },
     toggleActive: function(id) {
       data.toggleActive(this.type, id);
