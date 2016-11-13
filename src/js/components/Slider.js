@@ -10,7 +10,7 @@ export default {
       <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{open: open}">{{ setText() }}</span></h3>
 
       <transition name="slide">
-        <div v-show="open" class="slider">
+        <div v-show="open" class="slider" ref="slider">
           <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}" v-bind:class="{active: slider.active.min}"></div>
           <div class="range" v-bind:style="{left: position.min + '%', width: position.range + '%'}"></div>
           <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}" v-bind:class="{active: slider.active.max}"></div>
@@ -30,14 +30,16 @@ export default {
         max: store.state[this.type].max,
         min: store.state[this.type].min,
         range: store.state[this.type].max - store.state[this.type].min,
+        width: undefined,
       }
     };
   },
   mounted: function() {
-    let current = false;
     const down = Observable.fromEvent(document, 'mousedown');
     const move = Observable.fromEvent(document, 'mousemove');
     const up = Observable.fromEvent(document, 'mouseup');
+    let current;
+    let startX = false;
 
     down.subscribe({
       next: event => {
@@ -54,12 +56,23 @@ export default {
 
     up.subscribe({
       next: () => {
+        startX = false;
         this.slider.active[current] = false;
       },
     });
 
     move.subscribe({
-      next: event => {},
+      next: event => {
+        if (! current) {
+          return;
+        }
+
+        if (! startX) {
+          startX = event.clientX;
+        }
+
+        this.getWidth();
+      },
     });
   },
   computed: {
@@ -83,6 +96,12 @@ export default {
     },
   },
   methods: {
+    getWidth: function() {
+      if (! this.slider.width) {
+        const rect = this.$refs.slider.getBoundingClientRect();
+        this.slider.width = rect.width;
+      }
+    },
     isActive: function(id) {
       return store.state.active[this.type].indexOf(id) !== -1;
     },
