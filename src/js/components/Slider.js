@@ -10,12 +10,10 @@ export default {
       <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{open: open}">{{ setText() }}</span></h3>
 
       <transition name="slide">
-        <div v-show="open">
-          <div class="slider">
-            <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}"></div>
-            <div class="range" v-bind:style="{left: position.min + '%', width: position.range + '%'}"></div>
-            <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}"></div>
-          </div>
+        <div v-show="open" class="slider">
+          <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}"></div>
+          <div class="range" v-bind:style="{left: position.min + '%', width: position.range + '%'}"></div>
+          <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}"></div>
         </div>
       </transition>
     </div>
@@ -60,8 +58,7 @@ export default {
   },
   computed: {
     open: function() {
-      return true;
-      // return store.state.active.open[this.type];
+      return store.state.active.open[this.type];
     },
     position: function() {
       const factor = 100 / (store.state[this.type].max - store.state[this.type].min);

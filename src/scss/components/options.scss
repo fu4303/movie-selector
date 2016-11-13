@@ -6,6 +6,7 @@
     float: left;
     border-bottom: 1px solid $gray-border;
     margin-bottom: 20px;
+    overflow-y: hidden;
     padding-bottom: 20px;
     width: 100%;
 
@@ -20,9 +21,7 @@
     }
 
     &:last-of-type {
-      border-bottom: 0;
       margin-bottom: 0;
-      padding-bottom: 0;
     }
   }
 

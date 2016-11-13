@@ -4,7 +4,7 @@
   margin-bottom: $margin-bottom;
   position: absolute;
   right: 0;
-  width: 380px;
+  width: $filter-width;
 
   .button {
     @include box-shadow();

@@ -1,24 +1,23 @@
 .slider {
+  $handle: 16px;
   $height: 6px;
 
   background: $gray-slider;
   border-radius: 5px;
   height: $height;
-  margin: 25px 0 10px;
+  margin: 25px 0 10px ($handle / 2);
   position: relative;
-  width: 100%;
+  width: calc(100% - #{$handle});
 
   .handle {
-    $dimension: 16px;
-
     background: $blue;
     border-radius: 100%;
     cursor: ew-resize;
-    height: $dimension;
-    margin-left: -($dimension / 2);
+    height: $handle;
+    margin-left: -($handle / 2);
     position: absolute;
-    top: -(($dimension - $height) / 2);
-    width: $dimension;
+    top: -(($handle - $height) / 2);
+    width: $handle;
   }
 
   .range {
