@@ -11,9 +11,9 @@ export default {
 
       <transition name="slide">
         <div v-show="open" class="slider" ref="slider">
-          <div class="handle" ref="min" v-bind:style="{left: position.min + '%'}" v-bind:class="{active: slider.active.min}"></div>
-          <div class="range" v-bind:style="{left: position.min + '%', width: position.range + '%'}"></div>
-          <div class="handle" ref="max" v-bind:style="{left: position.max + '%'}" v-bind:class="{active: slider.active.max}"></div>
+          <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: slider.active.min}"></div>
+          <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
+          <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: slider.active.max}"></div>
         </div>
       </transition>
     </div>
@@ -29,6 +29,10 @@ export default {
         },
         max: store.state[this.type].max,
         min: store.state[this.type].min,
+        position: {
+          max: 100,
+          min: 0,
+        },
         range: store.state[this.type].max - store.state[this.type].min,
         width: undefined,
       }
@@ -39,7 +43,7 @@ export default {
     const move = Observable.fromEvent(document, 'mousemove');
     const up = Observable.fromEvent(document, 'mouseup');
     let current;
-    let startX = false;
+    let initial = false;
 
     down.subscribe({
       next: event => {
@@ -56,8 +60,9 @@ export default {
 
     up.subscribe({
       next: () => {
-        startX = false;
         this.slider.active[current] = false;
+        current = false;
+        initial = false;
       },
     });
 
@@ -67,11 +72,23 @@ export default {
           return;
         }
 
-        if (! startX) {
-          startX = event.clientX;
+        this.getWidth();
+
+        const factor = this.slider.range / this.slider.width;
+
+        if (! initial) {
+          initial = {
+            clientX: event.clientX,
+            position: this.slider.position[current],
+            value: this.slider[current],
+          }
         }
 
-        this.getWidth();
+        const position = (event.clientX - initial.clientX) * (100 / this.slider.width);
+        this.slider.position[current] = initial.position + Math.round(position * 100) / 100;
+
+        const difference = Math.round((event.clientX - initial.clientX) * factor);
+        this.slider[current] = initial.value + difference;
       },
     });
   },
@@ -79,19 +96,11 @@ export default {
     open: function() {
       return store.state.active.open[this.type];
     },
-    position: function() {
-      const factor = 100 / this.slider.range;
-      const percentages = {
-        max: (store.state[this.type].max - this.slider.max) * factor,
-        min: (this.slider.min - store.state[this.type].min) * factor,
-      };
-      const max = 100 - (Math.round(percentages.max * 100) / 100);
-      const min = Math.round(percentages.min * 100) / 100;
-
+    getPosition: function() {
       return {
-        max: max,
-        min: min,
-        range: max - min,
+        max: this.slider.position.max,
+        min: this.slider.position.min,
+        range: this.slider.position.max - this.slider.position.min,
       };
     },
   },
