@@ -5,7 +5,7 @@
   background: $gray-slider;
   border-radius: 5px;
   height: $height;
-  margin: 25px 0 10px ($handle / 2);
+  margin: 30px 0 20px ($handle / 2);
   position: relative;
   width: calc(100% - #{$handle});
 
@@ -30,5 +30,28 @@
     background: $blue;
     height: $height;
     position: absolute;
+  }
+
+  &-values {
+    font-size: 16px;
+    line-height: normal;
+    margin-bottom: 10px;
+    text-align: center;
+
+    span {
+      display: inline-block;
+
+      &:first-child {
+        margin-right: 5px;
+      }
+
+      &:last-child {
+        margin-left: 5px;
+      }
+
+      &.active {
+        font-weight: bold;
+      }
+    }
   }
 }

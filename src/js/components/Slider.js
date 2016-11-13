@@ -10,10 +10,16 @@ export default {
       <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{open: open}">{{ setText() }}</span></h3>
 
       <transition name="slide">
-        <div v-show="open" class="slider" ref="slider">
-          <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: slider.active.min}"></div>
-          <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
-          <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: slider.active.max}"></div>
+        <div v-show="open">
+          <div class="slider" ref="slider">
+            <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: slider.active.min}"></div>
+            <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
+            <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: slider.active.max}"></div>
+          </div>
+
+          <p class="slider-values">
+            <span v-bind:class="{active: slider.active.min}">{{ slider.min }}</span> — <span v-bind:class="{active: slider.active.max}">{{ slider.max }}</span>
+          </p>
         </div>
       </transition>
     </div>

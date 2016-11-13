@@ -16,7 +16,7 @@ const store = new Vuex.Store({
       ratings: [],
       open: {
         genres: false,
-        years: true,
+        years: false,
         ratings: false,
       },
     },
