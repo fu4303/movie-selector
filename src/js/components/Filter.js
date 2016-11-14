@@ -1,25 +1,22 @@
 import data from '../data.js'
+import filter from '../templates/filter.js'
 import store from '../store.js'
 
 export default {
   template: `
-    <div class="component">
-      <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{'open': open}">{{ setText() }}</span></h3>
+    ${filter.open}
+      <ol>
+        <li v-for="option in options" v-on:click="toggleActive(option.id)">
+          <div class="check">
+            <transition name="appear">
+              <span class="mark" v-show="isActive(option.id)"></span>
+            </transition>
+          </div>
 
-      <transition name="slide">
-        <ol v-show="open">
-          <li v-for="option in options" v-on:click="toggleActive(option.id)">
-            <div class="check">
-              <transition name="appear">
-                <span class="mark" v-show="isActive(option.id)"></span>
-              </transition>
-            </div>
-
-            <p>{{ option.name }}</p>
-          </li>
-        </ol>
-      </transition>
-    </div>
+          <p>{{ option.name }}</p>
+        </li>
+      </ol>
+    ${filter.close}
   `,
   props: ['title', 'type'],
   data: function() {

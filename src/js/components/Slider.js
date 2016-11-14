@@ -2,27 +2,22 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/fromEvent'
 
 import data from '../data.js'
+import filter from '../templates/filter.js'
 import store from '../store.js'
 
 export default {
   template: `
-    <div class="component">
-      <h3>{{ title }}<span v-on:click="toggleOpen()" v-bind:class="{open: open}">{{ setText() }}</span></h3>
+    ${filter.open}
+      <div class="slider" ref="slider">
+        <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: active.min}"></div>
+        <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
+        <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: active.max}"></div>
+      </div>
 
-      <transition name="slide">
-        <div v-show="open">
-          <div class="slider" ref="slider">
-            <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: active.min}"></div>
-            <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
-            <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: active.max}"></div>
-          </div>
-
-          <p class="slider-values">
-            <span v-bind:class="{active: active.min}">{{ min }}</span> — <span v-bind:class="{active: active.max}">{{ max }}</span>
-          </p>
-        </div>
-      </transition>
-    </div>
+      <p class="slider-values">
+        <span v-bind:class="{active: active.min}">{{ min }}</span> — <span v-bind:class="{active: active.max}">{{ max }}</span>
+      </p>
+    ${filter.close}
   `,
   props: ['title', 'type'],
   data: function() {
