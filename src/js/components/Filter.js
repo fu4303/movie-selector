@@ -1,10 +1,10 @@
-import data from '../data.js'
-import filter from '../templates/filter.js'
+import filter from '../mixins/filter.js'
 import store from '../store.js'
+import wrapper from '../templates/filter.js'
 
 export default {
   template: `
-    ${filter.open}
+    ${wrapper.open}
       <ol>
         <li v-for="option in options" v-on:click="toggleActive(option.id)">
           <div class="check">
@@ -16,35 +16,12 @@ export default {
           <p>{{ option.name }}</p>
         </li>
       </ol>
-    ${filter.close}
+    ${wrapper.close}
   `,
-  props: ['title', 'type'],
+  mixins: [filter],
   data: function() {
     return {
       options: store.state[this.type],
     };
-  },
-  computed: {
-    open: function() {
-      return store.state.active.open[this.type];
-    },
-  },
-  methods: {
-    isActive: function(id) {
-      return store.state.active[this.type].indexOf(id) !== -1;
-    },
-    toggleOpen: function() {
-      store.commit('toggleOpen', this.type);
-    },
-    setText: function()  {
-      if (this.open) {
-        return 'Hide options';
-      } else {
-        return 'Show options';
-      }
-    },
-    toggleActive: function(id) {
-      data.toggleActive(this.type, id);
-    },
   },
 }
