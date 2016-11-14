@@ -1,15 +1,16 @@
-import Filter from './Filter.js'
+import Genres from './filters/Genres.js'
 import Notice from './Notice.js'
+import Ratings from './filters/Ratings.js'
 import Recommend from './Recommend.js'
-import Slider from './Slider.js'
+import Years from './filters/Years.js'
 
 export default {
   template: `
     <div id="filters">
       <div id="options">
-        <movie-filter title="Genres" type="genres"></movie-filter>
-        <movie-slider title="Years" type="years"></movie-slider>
-        <movie-filter title="Ratings" type="ratings"></movie-filter>
+        <genres title="Genres" type="genres"></genres>
+        <years title="Years" type="years"></years>
+        <ratings title="Ratings" type="ratings"></ratings>
         <recommend></recommend>
       </div>
 
@@ -17,9 +18,10 @@ export default {
     </div>
   `,
   components: {
-    'movie-filter': Filter,
-    'movie-slider': Slider,
+    'genres': Genres,
     'notice': Notice,
+    'ratings': Ratings,
     'recommend': Recommend,
+    'years': Years,
   },
 }

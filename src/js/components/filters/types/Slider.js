@@ -1,13 +1,12 @@
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/fromEvent'
 
-import filter from '../mixins/filter.js'
-import store from '../store.js'
-import wrapper from '../templates/filter.js'
+import filter from '../../../mixins/filter.js'
+import store from '../../../store.js'
 
 export default {
   template: `
-    ${wrapper.open}
+    <div>
       <div class="slider" ref="slider">
         <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: active.min}"></div>
         <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
@@ -17,9 +16,9 @@ export default {
       <p class="slider-values">
         <span v-bind:class="{active: active.min}">{{ min }}</span> — <span v-bind:class="{active: active.max}">{{ max }}</span>
       </p>
-    ${wrapper.close}
+    </div>
   `,
-  mixins: [filter],
+  props: ['type'],
   data: function() {
     return {
       active: {
