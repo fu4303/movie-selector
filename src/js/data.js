@@ -33,6 +33,11 @@ export default {
 
     return movie;
   },
+  getYear: () => {
+    const now = new Date();
+
+    return now.getFullYear();
+  },
   set: (data, date) => {
     localStorage.setItem('genres', JSON.stringify(data.genres.genres.filter(genre => {
       return genre.name !== 'TV Movie';

@@ -1,4 +1,3 @@
-import data from '../data.js'
 import store from '../store.js'
 
 export default {

@@ -5,14 +5,12 @@ import data from './data.js'
 
 Vue.use(Vuex);
 
-const now = new Date();
-const year = now.getFullYear();
 const store = new Vuex.Store({
   state: {
     active: {
       genres: [],
       years: {
-        max: year,
+        max: data.getYear(),
         min: 1940,
       },
       ratings: [],
