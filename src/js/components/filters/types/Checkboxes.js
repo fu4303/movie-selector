@@ -1,4 +1,3 @@
-import data from '../../../data.js'
 import store from '../../../store.js'
 
 export default {
@@ -26,7 +25,10 @@ export default {
       return store.state.active[this.type].indexOf(id) !== -1;
     },
     toggleActive: function(id) {
-      data.toggleActive(this.type, id);
+      store.commit('toggleActive', {
+        type: this.type,
+        id: id,
+      });
     },
   },
 }

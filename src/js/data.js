@@ -44,14 +44,4 @@ export default {
 
     store.commit('setData');
   },
-  toggleActive: (type, id) => {
-    if (type === 'years') {
-      store.commit('clear', type);
-    }
-
-    store.commit('toggleActive', {
-      type: type,
-      id: id,
-    });
-  },
 }
