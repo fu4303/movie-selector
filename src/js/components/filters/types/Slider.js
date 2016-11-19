@@ -26,10 +26,6 @@ export default {
         min: false,
       },
       current: undefined,
-      initial: {
-        max: store.state[this.type].max,
-        min: store.state[this.type].min,
-      },
       previous: false,
       max: store.state.active[this.type].max,
       min: store.state.active[this.type].min,
@@ -45,8 +41,8 @@ export default {
   computed: {
     getPosition: function() {
       const factor = 100 / this.range;
-      const max = (this.range - (this.initial.max - this.max)) * factor;
-      const min = (this.range - (this.initial.max - this.min)) * factor;
+      const max = (this.range - (store.state[this.type].max - this.max)) * factor;
+      const min = (this.range - (store.state[this.type].max - this.min)) * factor;
 
       return {
         max: Math.round(max * 100) / 100,
@@ -123,6 +119,7 @@ export default {
       });
     },
     setValue: function(difference) {
+      const initial = store.state[this.type];
       let newValue = this.previous.value + difference;
 
       if (this.current === 'max' && newValue <= this.min) {
@@ -131,10 +128,10 @@ export default {
         newValue = this.max;
       }
 
-      if (newValue <= this.initial.min) {
-        newValue = this.initial.min;
-      } else if (newValue >= this.initial.max) {
-        newValue = this.initial.max;
+      if (newValue <= initial.min) {
+        newValue = initial.min;
+      } else if (newValue >= initial.max) {
+        newValue = initial.max;
       }
 
       return newValue;
