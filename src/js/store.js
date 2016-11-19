@@ -11,7 +11,7 @@ const store = new Vuex.Store({
       genres: [],
       years: {
         max: data.getYear(),
-        min: 1940,
+        min: 1960,
       },
       ratings: [],
       open: {
@@ -22,13 +22,17 @@ const store = new Vuex.Store({
     },
     animate: false,
     genres: null,
+    movie: false,
     posterBase: null,
     ratings: [
       {id: 'lesserKnown', name: 'Include lesser known movies'},
       {id: 'bad', name: 'Include bad movies'},
     ],
-    movie: false,
     urlBase: null,
+    years: {
+      max: data.getYear(),
+      min: 1940,
+    },
   },
   mutations: {
     clear: (state, type) => {

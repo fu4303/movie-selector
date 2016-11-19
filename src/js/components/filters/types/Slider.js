@@ -27,13 +27,13 @@ export default {
       },
       current: undefined,
       initial: {
-        max: store.state.active[this.type].max,
-        min: store.state.active[this.type].min,
+        max: store.state[this.type].max,
+        min: store.state[this.type].min,
       },
       previous: false,
       max: store.state.active[this.type].max,
       min: store.state.active[this.type].min,
-      range: store.state.active[this.type].max - store.state.active[this.type].min,
+      range: store.state[this.type].max - store.state[this.type].min,
       width: undefined,
     };
   },
