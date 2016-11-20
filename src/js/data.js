@@ -37,8 +37,18 @@ function setTrailer(movie) {
   return 'https://www.youtube.com/results?search_query=' + title + '+' + movie.year + '+trailer+hd';
 }
 
+const display = {
+  ratingSlider: value => {
+    return createRating(value / 2);
+  },
+  years: value => {
+    return value;
+  },
+};
+
 export default {
   createRating: createRating,
+  display: display,
   getYear: getYear,
   set: set,
   setGenres: setGenres,

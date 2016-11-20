@@ -7,7 +7,6 @@ function buildQuery(method) {
 
 function addParameters(page) {
   const years = store.state.active.years;
-  let minAverage = 5.0;
   let minVotes = 50;
   let params = '';
 
@@ -21,13 +20,9 @@ function addParameters(page) {
     minVotes = 10;
   }
 
+  params += '&vote_average.gte=' + (store.state.active.ratingSlider.min / 2);
+  params += '&vote_average.lte=' + (store.state.active.ratingSlider.max / 2);
   params += '&vote_count.gte=' + minVotes;
-
-  if (store.state.active.ratingOptions.indexOf('bad') !== -1) {
-    minAverage = 1.0;
-  }
-
-  params += '&vote_average.gte=' + minAverage;
 
   if (page) {
     params += '&page=' + page;

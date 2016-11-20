@@ -26,6 +26,10 @@
     }
   }
 
+  div + ol {
+    margin-top: 0;
+  }
+
   ol {
     float: left;
     font-size: 16px;

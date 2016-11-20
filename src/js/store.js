@@ -14,6 +14,10 @@ const store = new Vuex.Store({
         min: 1960,
       },
       ratingOptions: [],
+      ratingSlider: {
+        max: 20,
+        min: 10,
+      },
       open: {
         genres: false,
         years: false,
@@ -26,8 +30,11 @@ const store = new Vuex.Store({
     posterBase: null,
     ratingOptions: [
       {id: 'lesserKnown', name: 'Include lesser known movies'},
-      {id: 'bad', name: 'Include bad movies'},
     ],
+    ratingSlider: {
+      max: 20,
+      min: 0,
+    },
     urlBase: null,
     years: {
       max: data.getYear(),

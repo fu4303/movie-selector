@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/observable/fromEvent'
 
+import data from '../../../data.js'
 import filter from '../../../mixins/filter.js'
 import store from '../../../store.js'
 
@@ -14,7 +15,7 @@ export default {
       </div>
 
       <p class="slider-values">
-        <span v-bind:class="{active: active.min}">{{ min }}</span> — <span v-bind:class="{active: active.max}">{{ max }}</span>
+        <span v-bind:class="{active: active.min}">{{ getValue.min }}</span> — <span v-bind:class="{active: active.max}">{{ getValue.max }}</span>
       </p>
     </div>
   `,
@@ -48,6 +49,12 @@ export default {
         max: Math.round(max * 100) / 100,
         min: Math.round(min * 100) / 100,
         range: max - min,
+      };
+    },
+    getValue: function() {
+      return {
+        max: data.display[this.type](this.max),
+        min: data.display[this.type](this.min),
       };
     },
   },
