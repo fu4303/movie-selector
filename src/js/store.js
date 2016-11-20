@@ -72,6 +72,11 @@ const store = new Vuex.Store({
       state.posterBase = localStorage.getItem('posterBase');
       state.urlBase = localStorage.getItem('urlBase');
     },
+    setError: state => {
+      state.movie = {
+        error: true,
+      };
+    },
     setMovie: (state, movie) => {
       movie.genres = data.setGenres(state.genres, movie.genre_ids);
       movie.poster = store.state.urlBase + store.state.posterBase + movie.backdrop_path;

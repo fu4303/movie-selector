@@ -15,6 +15,12 @@ export default {
 
       http(api.recommend()).subscribe({
         next: response => {
+          if (! response.total_results) {
+            store.commit('setError');
+
+            return;
+          }
+
           http(api.page(randomize(response.total_pages))).subscribe({
             next: response => {
               store.commit('setMovie', response.results[randomize(response.results.length, true)]);

@@ -3,7 +3,10 @@
   -webkit-animation: appear-delayed ($animation * 2) ease-out;
   animation: appear-delayed ($animation * 2) ease-out;
   margin-bottom: $margin-bottom;
+  min-height: 368px;
+  position: relative;
   width: 580px;
+  z-index: 1;
 
   .poster,
   .poster img {
@@ -53,6 +56,15 @@
 
   p {
     clear: both;
+
+    &.centered {
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
   .button {
