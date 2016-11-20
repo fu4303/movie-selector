@@ -17,13 +17,13 @@ function addParameters(page) {
     params += '&with_genres=' + store.state.active.genres.join('|');
   }
 
-  if (store.state.active.ratings.indexOf('lesserKnown') !== -1) {
+  if (store.state.active.ratingOptions.indexOf('lesserKnown') !== -1) {
     minVotes = 10;
   }
 
   params += '&vote_count.gte=' + minVotes;
 
-  if (store.state.active.ratings.indexOf('bad') !== -1) {
+  if (store.state.active.ratingOptions.indexOf('bad') !== -1) {
     minAverage = 1.0;
   }
 

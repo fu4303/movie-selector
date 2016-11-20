@@ -53,6 +53,7 @@ new Vue({
     }).subscribe({
       next: response => {
         data.set(response, date);
+        store.commit('setData');
 
         this.ready = true;
       },

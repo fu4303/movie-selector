@@ -13,7 +13,7 @@ const store = new Vuex.Store({
         max: data.getYear(),
         min: 1960,
       },
-      ratings: [],
+      ratingOptions: [],
       open: {
         genres: false,
         years: false,
@@ -24,7 +24,7 @@ const store = new Vuex.Store({
     genres: null,
     movie: false,
     posterBase: null,
-    ratings: [
+    ratingOptions: [
       {id: 'lesserKnown', name: 'Include lesser known movies'},
       {id: 'bad', name: 'Include bad movies'},
     ],
@@ -66,7 +66,13 @@ const store = new Vuex.Store({
       state.urlBase = localStorage.getItem('urlBase');
     },
     setMovie: (state, movie) => {
-      state.movie = data.convert(movie);
+      movie.genres = data.setGenres(state.genres, movie.genre_ids);
+      movie.poster = store.state.urlBase + store.state.posterBase + movie.backdrop_path;
+      movie.rating = data.createRating(movie.vote_average);
+      movie.year = movie.release_date.slice(0, 4);
+      movie.trailer = data.setTrailer(movie);
+
+      state.movie = movie;
     },
     setSliderValue: (state, payload) => {
       state.active[payload.type][payload.bound] = payload.value;

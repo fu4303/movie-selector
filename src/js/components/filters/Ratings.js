@@ -6,7 +6,7 @@ import wrapper from '../../templates/filter.js'
 export default {
   template: `
     ${wrapper.open}
-      <checkboxes type="ratings"></checkboxes>
+      <checkboxes type="ratingOptions"></checkboxes>
     ${wrapper.close}
   `,
   mixins: [filter],
