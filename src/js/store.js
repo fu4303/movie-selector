@@ -33,7 +33,7 @@ const store = new Vuex.Store({
     ],
     ratingSlider: {
       max: 20,
-      min: 0,
+      min: 2,
     },
     urlBase: null,
     years: {
