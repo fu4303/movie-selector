@@ -15,10 +15,10 @@ export default {
     </ol>
   `,
   props: ['type'],
-  data: function() {
-    return {
-      options: store.state[this.type],
-    };
+  computed: {
+    options: function() {
+      return store.state[this.type];
+    },
   },
   methods: {
     isActive: function(id) {

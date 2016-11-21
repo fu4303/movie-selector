@@ -20,6 +20,10 @@
     width: $handle;
     z-index: 1;
 
+    &:first-of-type {
+      z-index: 2;
+    }
+
     &.active {
       -webkit-transform: scale(1.25);
       transform: scale(1.25);
