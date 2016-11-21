@@ -11,7 +11,7 @@ export default {
       <div class="slider" ref="slider">
         <div class="handle" ref="min" v-bind:style="{left: getPosition.min + '%'}" v-bind:class="{active: active.min}"></div>
         <div class="range" v-bind:style="{left: getPosition.min + '%', width: getPosition.range + '%'}"></div>
-        <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: active.max}"></div>
+        <div class="handle" ref="max" v-bind:style="{left: getPosition.max + '%'}" v-bind:class="{active: active.max, overlap: checkOverlap}"></div>
       </div>
 
       <p class="slider-values">
@@ -40,6 +40,9 @@ export default {
     this.observeUp();
   },
   computed: {
+    checkOverlap: function() {
+      return this.max === this.min && store.state[this.type].min === this.min;
+    },
     getPosition: function() {
       const factor = 100 / this.range;
       const max = (this.range - (store.state[this.type].max - this.max)) * factor;

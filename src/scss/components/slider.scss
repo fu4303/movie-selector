@@ -28,6 +28,10 @@
       -webkit-transform: scale(1.25);
       transform: scale(1.25);
     }
+
+    &.overlap {
+      z-index: 3;
+    }
   }
 
   .range {
