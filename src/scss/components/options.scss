@@ -39,12 +39,10 @@
   }
 
   .slide-enter-active {
-    -webkit-animation: slide-enter $animation ease-out;
     animation: slide-enter $animation ease-out;
   }
 
   .slide-leave-active {
-    -webkit-animation: slide-leave $animation ease-out;
     animation: slide-leave $animation ease-out;
   }
 
@@ -81,14 +79,12 @@
       font-weight: 400;
       margin-top: 4px;
       text-decoration: underline;
-      -webkit-transition: color $animation ease-out;
       transition: color $animation ease-out;
 
       &:before {
         content: '+';
         float: left;
         margin-right: 5px;
-        -webkit-transition: transform $animation ease-out;
         transition: transform $animation ease-out;
       }
 
@@ -97,14 +93,12 @@
       }
 
       &.open:before {
-        -webkit-transform: rotate(45deg);
         transform: rotate(45deg);
       }
     }
   }
 
   p {
-    -webkit-transition: color $animation ease-out;
     transition: color $animation ease-out;
   }
 }

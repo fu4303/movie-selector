@@ -10,7 +10,6 @@
     background-size: 100%;
     height: 20px;
     padding: 10px;
-    -webkit-transition: transform $animation ease-out;
     transition: transform $animation ease-out;
     width: 30px;
   }
@@ -18,7 +17,6 @@
   &:active,
   &:hover {
     div {
-      -webkit-transform: scale(1.2, 1.2);
       transform: scale(1.2, 1.2);
     }
   }

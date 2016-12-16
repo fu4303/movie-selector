@@ -5,7 +5,6 @@
   position: absolute;
   right: 0;
   top: 22.5%;
-  -webkit-transition: top $animation ease-out, width $animation ease-out;
   transition: top $animation ease-out, width $animation ease-out;
   width: $filter-width;
 

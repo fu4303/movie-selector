@@ -25,6 +25,10 @@ module.exports = {
             {
               loader: 'css-loader',
               query: {
+                autoprefixer: {
+                  add: true,
+                  browsers: ['> 0.05%'],
+                },
                 minimize: true,
               },
             },

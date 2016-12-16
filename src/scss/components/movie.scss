@@ -1,6 +1,5 @@
 #movie {
   @include block();
-  -webkit-animation: appear-delayed ($animation * 2) ease-out;
   animation: appear-delayed ($animation * 2) ease-out;
   margin-bottom: $margin-bottom;
   min-height: 368px;

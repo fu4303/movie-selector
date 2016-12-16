@@ -22,9 +22,6 @@
 
 html.drag {
   cursor: ew-resize;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
@@ -37,7 +34,7 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.8;
   margin: 0;
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 p,
