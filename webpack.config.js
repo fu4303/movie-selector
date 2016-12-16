@@ -1,49 +1,61 @@
 'use strict';
 
-const extractText = require('extract-text-webpack-plugin'),
-      webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry:  './src/js/app.js',
-  output: {
-    filename: 'src/js/output/bundle.js'
-  },
-  resolve: {
-    alias: {
-      vue: 'vue/dist/vue.js'
-    }
-  },
   module: {
-    loaders: [
+    rules: [
       {
-        exclude: /node_modules/,
-        test: /\.js$/,
-        loader: 'babel',
-        query: {
+        include: path.resolve(__dirname, 'src/js'),
+        loader: 'babel-loader',
+        options: {
           compact: true,
-          presets: ['es2015']
-        }
+          presets: ['es2015'],
+        },
+        test: /\.js$/,
       },
       {
+        include: path.resolve(__dirname, 'src/scss'),
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: [
+            {
+              loader: 'css-loader',
+              query: {
+                minimize: true,
+              },
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
+        }),
         test: /\.scss$/,
-        loader: extractText.extract('style', 'css!sass')
-      }
-    ]
+      },
+    ],
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist/js'),
   },
   plugins: [
-    new extractText('src/scss/output/bundle.css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
+    new ExtractTextPlugin('../css/bundle.css'),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
       },
       output: {
-        comments: false
-      }
-    })
+        comments: false,
+      },
+    }),
   ],
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js',
+    },
+  },
+  watch: true,
 };
