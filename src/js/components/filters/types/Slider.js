@@ -27,9 +27,9 @@ export default {
         min: false,
       },
       current: undefined,
-      previous: false,
       max: store.state.active[this.type].max,
       min: store.state.active[this.type].min,
+      previous: false,
       range: store.state[this.type].max - store.state[this.type].min,
       width: undefined,
     };
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     getWidth: function() {
-      if (! this.width) {
+      if (!this.width) {
         const rect = this.$refs.slider.getBoundingClientRect();
         this.width = rect.width;
       }
@@ -87,16 +87,16 @@ export default {
     observeUp: function() {
       Observable.fromEvent(document, 'mouseup').subscribe({
         next: () => {
-          if (! this.current) {
+          if (!this.current) {
             return;
           }
 
           document.documentElement.classList.remove('drag');
 
           store.commit('setSliderValue', {
+            bound: this.current,
             type: this.type,
             value: this[this.current],
-            bound: this.current,
           });
 
           this.active[this.current] = false;
@@ -108,11 +108,11 @@ export default {
     observeMove: function() {
       Observable.fromEvent(document, 'mousemove').subscribe({
         next: event => {
-          if (! this.current) {
+          if (!this.current) {
             return;
           }
 
-          if (! this.previous) {
+          if (!this.previous) {
             this.previous = {
               clientX: event.clientX,
               value: this[this.current],

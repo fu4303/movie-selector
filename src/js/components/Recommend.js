@@ -11,7 +11,7 @@ export default {
     recommend: () => {
       store.commit('removeMovie');
 
-      scrollTo(0, 0);
+      window.scrollTo(0, 0);
 
       http(api.recommend()).subscribe({
         next: response => {

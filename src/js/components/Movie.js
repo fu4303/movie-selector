@@ -39,8 +39,8 @@ export default {
     toggleActive: id => {
       store.commit('open', 'genres');
       store.commit('toggleActive', {
+        id: id,
         type: 'genres',
-        id: id
       });
     },
   },

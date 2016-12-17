@@ -23,7 +23,7 @@ new Vue({
   components: {
     'movie-filters': Filters,
     'loading': Loading,
-    'movie': Movie
+    'movie': Movie,
   },
   data: {
     ready: false,

@@ -26,8 +26,8 @@ export default {
     },
     toggleActive: function(id) {
       store.commit('toggleActive', {
-        type: this.type,
         id: id,
+        type: this.type,
       });
     },
   },

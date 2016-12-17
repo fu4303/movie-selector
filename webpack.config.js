@@ -1,6 +1,6 @@
 'use strict';
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractText = require('extract-text-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -20,7 +20,7 @@ module.exports = (env) => {
         },
         {
           include: path.resolve(__dirname, 'src/scss'),
-          loader: ExtractTextPlugin.extract({
+          loader: extractText.extract({
             fallbackLoader: 'style-loader',
             loader: [
               {
@@ -46,7 +46,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, 'dist/js'),
     },
     plugins: [
-      new ExtractTextPlugin('../css/bundle.css'),
+      new extractText('../css/bundle.css'),
     ],
     resolve: {
       alias: {
