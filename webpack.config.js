@@ -67,6 +67,10 @@ module.exports = (env) => {
         },
       })
     );
+  } else {
+    config.performance = {
+      hints: false,
+    };
   }
 
   return config;
