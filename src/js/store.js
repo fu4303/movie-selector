@@ -79,7 +79,7 @@ const store = new Vuex.Store({
     },
     setMovie: (state, movie) => {
       movie.genres = data.setGenres(state.genres, movie.genre_ids);
-      movie.poster = store.state.urlBase + store.state.posterBase + movie.backdrop_path;
+      movie.poster = movie.backdrop_path ? store.state.urlBase + store.state.posterBase + movie.backdrop_path : null;
       movie.rating = data.createRating(movie.vote_average);
       movie.year = movie.release_date.slice(0, 4);
       movie.trailer = data.setTrailer(movie);

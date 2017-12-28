@@ -9,7 +9,7 @@ export default {
 
       <template v-else>
         <div class="poster">
-          <img v-bind:src="movie.poster">
+          <img v-if="movie.poster" v-bind:src="movie.poster">
 
           <h2>{{ movie.title }} <span>&nbsp;&bull;&nbsp; {{ movie.year }}</span></h2>
         </div>
