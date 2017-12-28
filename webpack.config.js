@@ -53,7 +53,6 @@ module.exports = (env) => {
         vue: 'vue/dist/vue.common.js',
       },
     },
-    watch: true,
   };
 
   if (env && env.production) {
@@ -71,6 +70,7 @@ module.exports = (env) => {
     config.performance = {
       hints: false,
     };
+    config.watch = true;
   }
 
   return config;
