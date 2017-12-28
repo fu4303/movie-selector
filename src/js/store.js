@@ -72,10 +72,8 @@ const store = new Vuex.Store({
       state.posterBase = localStorage.getItem('posterBase');
       state.urlBase = localStorage.getItem('urlBase');
     },
-    setError: state => {
-      state.movie = {
-        error: true,
-      };
+    setError: (state, error) => {
+      state.movie = { error };
     },
     setMovie: (state, movie) => {
       movie.genres = data.setGenres(state.genres, movie.genre_ids);

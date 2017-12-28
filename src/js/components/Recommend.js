@@ -16,7 +16,7 @@ export default {
       http(api.recommend()).subscribe({
         next: response => {
           if (! response.total_results) {
-            store.commit('setError');
+            store.commit('setError', 'No movie found. Try less specific filters!');
 
             return;
           }
@@ -25,8 +25,10 @@ export default {
             next: response => {
               store.commit('setMovie', response.results[randomize(response.results.length, true)]);
             },
+            error: () => store.commit('setError', 'Seems like something went wrong… Please try again!')
           });
-        }
+        },
+        error: () => store.commit('setError', 'Seems like something went wrong… Please try again!')
       });
     },
   },

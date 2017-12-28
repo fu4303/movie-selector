@@ -4,7 +4,7 @@ export default {
   template: `
     <div v-if="movie" id="movie">
       <template v-if="movie.error">
-        <p class="centered">No movie found. Try less specific filters!</p>
+        <p class="centered">{{ movie.error }}</p>
       </template>
 
       <template v-else>
