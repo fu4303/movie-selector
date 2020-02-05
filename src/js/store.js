@@ -16,7 +16,7 @@ const store = new Vuex.Store({
       ratingOptions: [],
       ratingSlider: {
         max: 20,
-        min: 10,
+        min: 12,
       },
       open: {
         genres: false,
