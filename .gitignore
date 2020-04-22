@@ -1,3 +1,4 @@
-.env.js
-dist
+.cache
+.DS_Store
 node_modules
+public

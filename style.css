@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind utilities;
+
+@keyframes loading {
+  100% { transform: rotate(360deg) }
+}
+
+.loading {
+  animation: loading 0.4s linear infinite;
+}
+
+.loading-slow {
+  animation: loading 0.6s linear infinite;
+}

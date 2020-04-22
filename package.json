@@ -1,21 +1,28 @@
 {
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.2",
+    "gatsby": "^2.20.27",
+    "gatsby-plugin-google-analytics": "^2.2.4",
+    "gatsby-plugin-netlify": "^2.2.3",
+    "gatsby-plugin-postcss": "^2.2.3",
+    "gatsby-plugin-purgecss": "^5.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "tailwindcss": "^1.3.1"
+  },
   "devDependencies": {
-    "babel-core": "6.21.0",
-    "babel-loader": "6.2.10",
-    "babel-preset-es2015": "6.18.0",
-    "css-loader": "0.26.1",
-    "extract-text-webpack-plugin": "v2.0.0-beta.4",
-    "node-sass": "4.7.2",
-    "rxjs": "5.0.2",
-    "sass-loader": "4.1.1",
-    "style-loader": "0.13.1",
-    "vue": "2.1.8",
-    "vuex": "2.1.1",
-    "webpack": "v2.2.0-rc.3"
+    "gatsby-plugin-typescript": "^2.3.3",
+    "netlify-cli": "^2.47.0",
+    "prettier": "^2.0.4",
+    "typescript": "^3.8.3"
   },
   "scripts": {
-    "build": "webpack",
-    "build:prod": "webpack -p --env.production",
-    "postinstall": "npm run build"
+    "build": "gatsby build",
+    "dev": "open http://localhost:8888/ && netlify dev",
+    "format": "prettier --write '**/*.{js,json,ts,tsx}'",
+    "serve": "npm run build && gatsby serve",
+    "start": "gatsby develop",
+    "typecheck": "tsc"
   }
 }
