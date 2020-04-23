@@ -1,22 +1,102 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Wrap from '../components/Wrap'
+import Button from '../components/Button'
 import Loading from '../components/Loading'
+import { post } from '../http'
+import Box from '../components/Box'
+import { Movie } from '../types'
+import Navigation from '../components/Navigation'
 
 export default () => {
+  const [error, setError] = useState(false)
+  const [booting, setBooting] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [movies, setMovies] = useState<[] | Movie[]>([])
+  const [current, setCurrent] = useState(0)
+
+  const movie = movies.length ? movies[current] : null
+  const background = movie
+    ? movie.background
+      ? movie.background
+      : movie.poster_xl
+    : null
+
+  const isNavigating = current !== movies.length - 1
+
+  const get = async () => {
+    setLoading(true)
+
+    try {
+      const response = await post(`/.netlify/functions/getMovie`)
+      setMovies((prevMovies) => [...prevMovies, response.data.movie])
+    } catch (e) {
+      setError(true)
+    }
+
+    setLoading(false)
+  }
+
   useEffect(() => {
-    ;(async () => {})()
+    if (movies.length) {
+      setCurrent(movies.length - 1)
+    }
+  }, [movies])
+
+  useEffect(() => {
+    ;(async () => {
+      await get()
+      setBooting(false)
+    })()
   }, [])
 
   return (
-    <Wrap>
-      <div className="relative flex justify-center items-center">
-        <div className="absolute">
-          <Loading size={64} slow />
-        </div>
-        <div className="absolute">
-          <Loading size={32} />
-        </div>
-      </div>
+    <Wrap background={background}>
+      {booting ? (
+        <Loading />
+      ) : (
+        <Box>
+          {error || !movie ? (
+            <p>Something went wrong… Please come back later.</p>
+          ) : (
+            <>
+              <div className="flex items-center mb-8">
+                <img
+                  alt={movie.title}
+                  className="rounded-md shadow-md bg-gray-700"
+                  width={240}
+                  height={360}
+                  src={movie.poster_sm}
+                  srcSet={`${movie.poster_lg} 2x`}
+                />
+                <div className="ml-12">
+                  <h2 className="font-semibold text-4xl mb-4 leading-tight">
+                    {movie.title}
+                  </h2>
+                  <p className="text-lg leading-relaxed text-gray-500">
+                    {movie.description}
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between">
+                <Button label="View trailers" href={movie.trailer} gray />
+                {!isNavigating && (
+                  <Button
+                    label={loading ? 'Just a second…' : 'Recommend me another'}
+                    onClick={() => get()}
+                  />
+                )}
+              </div>
+              {movies.length > 1 && (
+                <Navigation
+                  setCurrent={setCurrent}
+                  current={current}
+                  isNavigating={isNavigating}
+                />
+              )}
+            </>
+          )}
+        </Box>
+      )}
     </Wrap>
   )
 }

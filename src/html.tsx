@@ -35,7 +35,7 @@ export default (props: {
       />
       {props.headComponents}
     </head>
-    <body className="bg-gray-900 text-white">
+    <body className="bg-blue-900 text-gray-800">
       {props.preBodyComponents}
       <div
         key="body"

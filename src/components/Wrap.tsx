@@ -1,9 +1,21 @@
 import React from 'react'
 
-export default ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-auto px-5 sm:px-10 max-w-screen-lg">
-    <div className="h-screen flex divide justify-center items-center flex-col">
-      {children}
+export default ({
+  children,
+  background,
+}: {
+  children: React.ReactNode
+  background?: string | null
+}) => (
+  <>
+    <div
+      className="opacity-50 fixed w-full h-full left-0 top-0 bg-cover bg-center"
+      style={{ backgroundImage: background ? `url('${background}')` : 'none' }}
+    ></div>
+    <div className="h-screen flex justify-center items-center flex-col">
+      <div className="relative flex justify-center items-center">
+        {children}
+      </div>
     </div>
-  </div>
+  </>
 )
