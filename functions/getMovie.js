@@ -45,6 +45,10 @@ exports.handler = async (event) => {
     const trailer = `https://www.youtube.com/results?search_query=${result.title
       .toLowerCase()
       .replace(/\s/g, '+')}+${result.release_date.slice(0, 4)}+trailer+hd`
+    const description =
+      result.overview.length > 400
+        ? `${result.overview.slice(0, 400)}…`
+        : result.overview
     const movie = {
       background,
       poster_sm,
@@ -52,7 +56,7 @@ exports.handler = async (event) => {
       poster_xl,
       trailer,
       title: result.title,
-      description: result.overview,
+      description: description,
     }
 
     return {
