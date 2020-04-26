@@ -62,7 +62,7 @@ export default () => {
               <div className="sm:flex items-center mb-8">
                 <img
                   alt={movie.title}
-                  className="rounded-md shadow-md bg-gray-700 mb-8 sm:mb-0"
+                  className="w-60 h-90 rounded-md shadow-md bg-gray-700 mb-8 sm:mb-0"
                   width={240}
                   height={360}
                   src={movie.poster_sm}
