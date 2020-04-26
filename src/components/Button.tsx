@@ -29,17 +29,18 @@ export default ({
       cursor-pointer
       text-white
       text-sm
-      ${gray ? 'bg-pink-700 mb-4 sm:mb-0' : 'bg-purple-700'}
+      ${gray ? 'bg-pink-700 mb-2 md:mb-0' : 'bg-purple-700'}
       flex-shrink-0
-      py-4
+      py-3 md:py-4
       rounded
+      w-full
+      md:w-half-w-margin
     `}
     ref={(el) => {
       if (el && focus) {
         el.focus()
       }
     }}
-    style={{ width: `calc(50% - 1rem)` }}
     onClick={(e) => {
       if (onClick) {
         e.preventDefault()

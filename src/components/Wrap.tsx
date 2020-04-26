@@ -9,7 +9,7 @@ export default ({
 }) => (
   <>
     <div
-      className="opacity-50 fixed hidden sm:block w-full h-full left-0 top-0 bg-cover bg-center"
+      className="opacity-50 fixed w-full h-full left-0 top-0 bg-cover bg-center"
       style={{ backgroundImage: background ? `url('${background}')` : 'none' }}
     ></div>
     <div className="min-h-screen flex justify-center items-center flex-col">
