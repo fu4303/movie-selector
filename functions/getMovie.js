@@ -19,7 +19,7 @@ exports.handler = async (event) => {
       api_key: process.env.API_KEY,
       'primary_release_date.gte': '1992-01-01',
       'primary_release_date.lte': '2020-04-22',
-      'vote_average.gte': '5.6',
+      'vote_average.gte': '6.0',
       'vote_count.gte': '192',
       with_original_language: 'en',
       without_genres: '16',
@@ -57,6 +57,7 @@ exports.handler = async (event) => {
       trailer,
       title: result.title,
       description: description,
+      info: `Rating: ${result.vote_average} out of ${result.vote_count} votes`
     }
 
     return {
