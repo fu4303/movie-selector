@@ -17,8 +17,8 @@ exports.handler = async (event) => {
   try {
     const url = `https://api.themoviedb.org/3/discover/movie?${queryStringify({
       api_key: process.env.API_KEY,
-      'primary_release_date.gte': '1992-01-01',
-      'primary_release_date.lte': '2020-04-22',
+      'primary_release_date.gte': '1996-01-01',
+      'primary_release_date.lte': new Date().toISOString().slice(0, 10),
       'vote_average.gte': '6.0',
       'vote_count.gte': '192',
       with_original_language: 'en',
