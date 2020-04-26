@@ -12,24 +12,32 @@ export default ({
 }) => (
   <div className="text-sm font-medium text-gray-500 flex justify-between mt-6 select-none">
     {current > 0 && (
-      <div className="flex flex-grow items-baseline cursor-pointer">
+      <div
+        className="flex flex-grow items-baseline cursor-pointer"
+        tabIndex={0}
+        onClick={() => setCurrent(current - 1)}
+        onKeyUp={(e) => {
+          if (e.key === 'Enter' || e.keyCode === 13) {
+            setCurrent(current - 1)
+          }
+        }}
+      >
         <Arrow />
-        <p
-          className="flex-grow text-left"
-          onClick={() => setCurrent(current - 1)}
-        >
-          Wait, what was the previous one?
-        </p>
+        <p className="flex-grow text-left">Wait, what was the previous one?</p>
       </div>
     )}
     {isNavigating && (
-      <div className="flex flex-grow items-baseline cursor-pointer">
-        <p
-          className="flex-grow text-right"
-          onClick={() => setCurrent(current + 1)}
-        >
-          Go back to the next one
-        </p>
+      <div
+        className="flex flex-grow items-baseline cursor-pointer"
+        tabIndex={0}
+        onClick={() => setCurrent(current + 1)}
+        onKeyUp={(e) => {
+          if (e.key === 'Enter' || e.keyCode === 13) {
+            setCurrent(current + 1)
+          }
+        }}
+      >
+        <p className="flex-grow text-right">Go back to the next one</p>
         <Arrow right />
       </div>
     )}
