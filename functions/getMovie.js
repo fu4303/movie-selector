@@ -22,7 +22,7 @@ exports.handler = async (event) => {
       'vote_average.gte': '6.0',
       'vote_count.gte': '192',
       with_original_language: 'en',
-      without_genres: '16',
+      without_genres: '16,10751',
     })}`
     const all = await axios.get(url)
     const page = await axios.get(
@@ -46,8 +46,8 @@ exports.handler = async (event) => {
       .toLowerCase()
       .replace(/\s/g, '+')}+${result.release_date.slice(0, 4)}+trailer+hd`
     const description =
-      result.overview.length > 400
-        ? `${result.overview.slice(0, 400)}…`
+      result.overview.length > 340
+        ? `${result.overview.slice(0, 340)}…`
         : result.overview
     const movie = {
       background,
@@ -57,7 +57,6 @@ exports.handler = async (event) => {
       trailer,
       title: result.title,
       description: description,
-      info: `Rating: ${result.vote_average} out of ${result.vote_count} votes`
     }
 
     return {
