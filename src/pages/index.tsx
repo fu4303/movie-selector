@@ -83,6 +83,7 @@ export default () => {
                   <Button
                     label={loading ? 'Just a second…' : 'Recommend me another'}
                     onClick={() => get()}
+                    focus={movies.length > 1}
                   />
                 )}
               </div>
