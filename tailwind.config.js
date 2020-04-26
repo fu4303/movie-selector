@@ -5,6 +5,9 @@ module.exports = {
         '60': '15rem',
         '90': '22.5rem',
       },
+      width: {
+        'half-w-margin': 'calc(50% - 1rem)',
+      },
     },
     colors: {
       transparent: 'transparent',
