@@ -59,25 +59,25 @@ export default () => {
             <p>Something went wrong… Please come back later.</p>
           ) : (
             <>
-              <div className="flex items-center mb-8">
+              <div className="sm:flex items-center mb-8">
                 <img
                   alt={movie.title}
-                  className="rounded-md shadow-md bg-gray-700"
+                  className="rounded-md shadow-md bg-gray-700 mb-8 sm:mb-0"
                   width={240}
                   height={360}
                   src={movie.poster_sm}
                   srcSet={`${movie.poster_lg} 2x`}
                 />
-                <div className="ml-12">
-                  <h2 className="font-semibold text-4xl mb-4 leading-tight">
+                <div className="sm:ml-12">
+                  <h2 className="font-semibold text-2xl sm:text-4xl mb-4 leading-tight">
                     {movie.title}
                   </h2>
-                  <p className="text-lg leading-relaxed text-gray-500">
+                  <p className="sm:text-lg leading-relaxed text-gray-500">
                     {movie.description}
                   </p>
                 </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row justify-between">
                 <Button label="View trailers" href={movie.trailer} gray />
                 {!isNavigating && (
                   <Button

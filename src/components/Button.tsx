@@ -29,7 +29,7 @@ export default ({
       cursor-pointer
       text-white
       text-sm
-      ${gray ? 'bg-pink-700' : 'bg-purple-700'}
+      ${gray ? 'bg-pink-700 mb-4 sm:mb-0' : 'bg-purple-700'}
       flex-shrink-0
       py-4
       rounded
