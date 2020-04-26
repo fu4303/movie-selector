@@ -10,7 +10,7 @@ export default ({
   current: number
   isNavigating: boolean
 }) => (
-  <div className="text-sm font-medium text-gray-500 flex justify-between mt-6">
+  <div className="text-sm font-medium text-gray-500 flex justify-between mt-6 select-none">
     {current > 0 && (
       <div className="flex flex-grow items-baseline cursor-pointer">
         <Arrow />
