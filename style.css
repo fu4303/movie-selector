@@ -5,6 +5,12 @@
   100% { transform: rotate(360deg) }
 }
 
+@media(max-width: 767px) {
+  .background {
+    background-image: none !important;
+  }
+}
+
 .loading {
   animation: loading 0.4s linear infinite;
 }
