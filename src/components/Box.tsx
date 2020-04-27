@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ children }: {children: React.ReactNode }) => (
+export default ({ children }: { children: React.ReactNode }) => (
   <div
     className={`
       md:rounded-lg

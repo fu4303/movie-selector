@@ -26,13 +26,15 @@ export default ({
       `}
       style={{ backgroundImage: background ? `url('${background}')` : 'none' }}
     ></div>
-    <div className={`
-      ${booting ? 'min-h-screen' : 'md:min-h-screen'}
-      flex
-      justify-center
-      items-center
-      flex-col
-    `}>
+    <div
+      className={`
+        ${booting ? 'min-h-screen' : 'md:min-h-screen'}
+        flex
+        justify-center
+        items-center
+        flex-col
+      `}
+    >
       <div className="relative flex justify-center items-center h-full">
         {children}
       </div>
