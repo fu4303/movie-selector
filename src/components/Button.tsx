@@ -39,6 +39,7 @@ export default ({
     ref={(el) => {
       if (el && focus) {
         el.focus()
+        window.scrollTo(0, 0)
       }
     }}
     onClick={(e) => {

@@ -50,7 +50,7 @@ export default () => {
   }, [])
 
   return (
-    <Wrap background={background}>
+    <Wrap background={background} booting={booting}>
       {booting ? (
         <Loading />
       ) : (
@@ -83,20 +83,23 @@ export default () => {
                   <Button
                     label={loading ? 'Just a second…' : 'Recommend me another'}
                     onClick={() => get()}
-                    focus={movies.length > 1}
+                    focus={!loading && movies.length > 1}
                   />
                 )}
               </div>
               <div className="text-sm font-medium text-gray-500 flex justify-between mt-6 select-none">
-              {movies.length > 1 ? (
-                <Navigation
-                  setCurrent={setCurrent}
-                  current={current}
-                  isNavigating={isNavigating}
-                />
-              ) : (
-                <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
-              )}
+                {movies.length > 1 ? (
+                  <Navigation
+                    setCurrent={setCurrent}
+                    current={current}
+                    isNavigating={isNavigating}
+                  />
+                ) : (
+                  <p>
+                    This product uses the TMDb API but is not endorsed or
+                    certified by TMDb.
+                  </p>
+                )}
               </div>
             </>
           )}
