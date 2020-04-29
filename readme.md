@@ -5,7 +5,7 @@
   </a>
   ‌‌ 
   <a href="https://blockbust.netlify.app">
-    <img alt="Blockbust" src="static/screenshot.png">
+    <img alt="Blockbust" src="static/screenshot.jpg">
   </a>
   ‌‌ 
 </p>
