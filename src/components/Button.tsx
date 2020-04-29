@@ -3,13 +3,13 @@ import React from 'react'
 export default ({
   label,
   onClick,
-  gray,
+  first,
   href,
   focus,
 }: {
   label: string
   href?: string
-  gray?: boolean
+  first?: boolean
   focus?: boolean
   onClick?: () => void
 }) => (
@@ -29,7 +29,7 @@ export default ({
       cursor-pointer
       text-white
       text-sm
-      ${gray ? 'bg-pink-700 mb-2 md:mb-0' : 'bg-purple-700'}
+      ${first ? 'bg-pink-700 mb-2 md:mb-0' : 'bg-purple-700'}
       flex-shrink-0
       py-3 md:py-4
       rounded

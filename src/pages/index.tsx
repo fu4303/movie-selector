@@ -80,7 +80,7 @@ export default () => {
                 </div>
               </div>
               <div className="flex flex-col md:flex-row justify-between">
-                <Button label="View trailers" href={movie.trailer} gray />
+                <Button label="View trailers" href={movie.trailer} first />
                 {!isNavigating && (
                   <Button
                     label={loading ? 'Just a second…' : 'Recommend me another'}
