@@ -13,7 +13,7 @@ export default (props: {
       <meta
         property="og:title"
         content="Blockbust • Get a movie recommendation 🎥"
-      ></meta>
+      />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Blockbust" />
       <meta name="twitter:card" content="summary_large_image" />
@@ -28,7 +28,18 @@ export default (props: {
       <meta
         property="og:description"
         content="Sometimes, you just don't know what movie to watch. Blockbust will make the choice for you."
-      ></meta>
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta
+        property="og:image:secure_url"
+        content="https://blockbust.netlify.app/blockbust.jpg"
+      />
+      <meta
+        property="og:image"
+        content="https://blockbust.netlify.app/blockbust.jpg"
+      />
+      <meta data-react-helmet="true" property="og:locale" content="en_US" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
