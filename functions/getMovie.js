@@ -42,9 +42,12 @@ exports.handler = async (event) => {
     const poster_xl = result.poster_path
       ? `https://image.tmdb.org/t/p/original${result.poster_path}`
       : null
-    const trailer = `https://www.youtube.com/results?search_query=${result.title
-      .toLowerCase()
-      .replace(/\s/g, '+')}+${result.release_date.slice(0, 4)}+trailer+hd`
+    const trailer = `https://www.youtube.com/results?search_query=${encodeURIComponent(
+      `${result.title.toLowerCase()} ${result.release_date.slice(
+        0,
+        4
+      )} trailer hd`
+    )}`
     const description =
       result.overview.length > 340
         ? `${result.overview.slice(0, 340)}…`
