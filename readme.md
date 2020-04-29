@@ -11,7 +11,5 @@
   </a>
 </p>
 <p>‌</p>
-<p align="center">
-  <h4>Sometimes, you just don't know what movie to watch. Blockbust will make the choice for you.</h4>
-</p>
+<h4 align="center">Sometimes, you just don't know what movie to watch. Blockbust will make the choice for you.</h4>
 <p>‌</p>
