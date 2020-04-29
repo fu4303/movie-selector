@@ -12,10 +12,19 @@ export default ({
   <>
     <div
       className={`
-        background
-        ${booting ? '' : 'bg-white'}
-        md:bg-transparent
-        md:opacity-50
+      ${booting ? '' : 'bg-white md:bg-blue-900'}
+      fixed
+      w-full
+      h-full
+      left-0
+      top-0
+    `}
+    />
+    <div
+      className={`
+        hidden
+        md:block
+        opacity-50
         fixed
         w-full
         h-full

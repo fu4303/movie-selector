@@ -59,7 +59,7 @@ export default (props: {
       />
       {props.headComponents}
     </head>
-    <body className="bg-blue-900 text-gray-800">
+    <body className="bg-purple-900 text-gray-800">
       {props.preBodyComponents}
       <div
         key="body"
