@@ -56,7 +56,9 @@ export default () => {
       ) : (
         <Box>
           {error || !movie ? (
-            <p>Something went wrong… Please come back later.</p>
+            <p className="md:text-lg leading-relaxed text-gray-500">
+              Something went wrong… Please come back later.
+            </p>
           ) : (
             <>
               <div className="md:flex items-center mb-8">
