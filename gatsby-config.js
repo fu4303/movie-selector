@@ -8,7 +8,7 @@ module.exports = {
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-plugin-purgecss',
-      options: { purgeOnly: ['style.css'], tailwind: true },
+      options: { purgeOnly: ['src/style.css'], tailwind: true },
     },
     'gatsby-plugin-typescript',
   ],
