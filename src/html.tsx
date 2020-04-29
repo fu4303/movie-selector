@@ -9,13 +9,26 @@ export default (props: {
   <html lang="en" className="antialiased">
     <head>
       <meta charSet="utf-8" />
+      <title>Blockbust • Get a movie recommendation 🎥</title>
+      <meta
+        property="og:title"
+        content="Blockbust • Get a movie recommendation 🎥"
+      ></meta>
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="What movie to watch?" />
+      <meta property="og:site_name" content="Blockbust" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <meta
+        name="description"
+        content="Sometimes, you just don't know what movie to watch. Blockbust will make the choice for you."
+      />
+      <meta
+        property="og:description"
+        content="Sometimes, you just don't know what movie to watch. Blockbust will make the choice for you."
+      ></meta>
       <link
         rel="apple-touch-icon"
         sizes="180x180"
