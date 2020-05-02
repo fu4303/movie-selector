@@ -64,7 +64,7 @@ export default () => {
               <div className="md:flex items-center mb-8">
                 <img
                   alt={movie.title}
-                  className="object-cover w-full h-48 md:w-60 md:h-90 rounded-md shadow-md bg-gray-700 mb-8 md:mb-0"
+                  className="object-cover w-full h-60 md:w-60 md:h-90 rounded-md shadow-md bg-gray-700 mb-8 md:mb-0"
                   width={240}
                   height={360}
                   src={movie.poster_sm}
